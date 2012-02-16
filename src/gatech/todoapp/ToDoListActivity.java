@@ -10,5 +10,7 @@ public class ToDoListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //trey is gay holla
+        
+        //git sucks
     }
 }
