@@ -9,6 +9,6 @@ public class ToDoListActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        //trey is gay
+        //trey is gay holla
     }
 }
