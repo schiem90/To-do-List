@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="23dp"
             android:layout_weight="0.04"
-            android:text="Large Text"
+            android:text="Login Screen"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
