@@ -21,18 +21,21 @@ public class User {
 	public String getName() {
 		return name;
 	}
+	
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
+	
 	/**
 	 * @param email the email to set
 	 */
@@ -45,30 +48,35 @@ public class User {
 	public String getLoginId() {
 		return loginId;
 	}
+	
 	/**
 	 * @param loginId the loginId to set
 	 */
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
+	
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
+	
 	/**
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	/**
 	 * @return the tasks
 	 */
 	public ArrayList<Task> getTasks() {
 		return tasks;
 	}
+	
 	/**
 	 * @param tasks the tasks to set
 	 */
