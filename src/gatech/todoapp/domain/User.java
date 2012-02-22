@@ -4,16 +4,47 @@ import java.util.ArrayList;
 
 /**
  * This class represents a user of the application.
- *
  */
 public class User {
 	
+	private Integer ID;
 	private String name;
 	private String email;
-	private String loginId;
+	private String username;
 	private String password;
 	private ArrayList<Task> tasks;
 	
+	public User() {
+		this.ID = null;
+	}
+	/**
+	 * Creates a new user with the given parameters
+	 * @param name The name of the user
+	 * @param email The user's email address
+	 * @param username The username to login with
+	 * @param password The password
+	 */
+	public User(String name, String email, String username, String password) {
+		this();
+		this.name = name;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+	}
+	
+	/**
+	 * @return the ID
+	 */
+	public Integer getID() {
+		return ID;
+	}
+	
+	/**
+	 * @param ID the ID to set
+	 */
+	public void setID(Integer ID) {
+		this.ID = ID;
+	}
 	
 	/**
 	 * @return the name
@@ -43,17 +74,17 @@ public class User {
 		this.email = email;
 	}
 	/**
-	 * @return the loginId
+	 * @return the username
 	 */
-	public String getLoginId() {
-		return loginId;
+	public String getUsername() {
+		return username;
 	}
 	
 	/**
-	 * @param loginId the loginId to set
+	 * @param username the username to set
 	 */
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	/**
