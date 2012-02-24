@@ -7,7 +7,10 @@ import gatech.todoapp.domain.User;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.*;
+import android.widget.Button;
 
 public class ToDoListActivity extends Activity {
 	
@@ -18,6 +21,7 @@ public class ToDoListActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        Button createAccount=(Button) findViewById(R.id.Button01);
     }
     
     @Override
@@ -55,5 +59,21 @@ public class ToDoListActivity extends Activity {
     	//END TREY'S TEST CODE
     	
 	}
+    private void handleButtonClick()
+    {
+    	startActivity(new Intent(this, CreateAccountActivity.class));
+    }
+    
+    private class ButtonHandler implements View.OnClickListener
+    {
+    	
+	public void onClick(View v)
+	{
+		handleButtonClick();
+	}	
+	
+    }
+    
+    
     
 }
