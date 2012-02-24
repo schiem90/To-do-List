@@ -27,12 +27,39 @@ public class ToDoListActivity extends Activity {
         Button createAccount=(Button) findViewById(R.id.register);
         createAccount.setOnClickListener(new View.OnClickListener(){
         	public void onClick(View v){
-        		
+        		// TODO go to create account screen
         	   Intent i = new Intent(ToDoListActivity.this, CreateAccountActivity.class);
                startActivity(i);
+        	
         	}
             });
-        	
+        Button Login=(Button) findViewById(R.id.login);
+        Login.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				// TODO attempt to login (used Trey's test code)
+				//TREY'S TEST CODE FOR TESTING DB STUFF
+		    	db= new DatabaseUtil(ToDoListActivity.this);
+		    	//user the user you registered above to test
+		    	User currentUser = db.loginUser("Trey", "12"); // returns null b/c trey not in db
+		    	//Dialog box to see what info DB is getting
+		    	AlertDialog alertDialog = new AlertDialog.Builder(ToDoListActivity.this).create();
+		    	alertDialog.setTitle("Logged In As");
+
+		    	//login failed
+		    	if (currentUser == null) {
+		    		alertDialog.setMessage("Login Failed");
+		    	} else {
+		    		alertDialog.setMessage("User ID: " + currentUser.getID() + "\n Name: " + currentUser.getName());
+		    	}    	
+
+		    	  alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		    	      public void onClick(DialogInterface dialog, int which) {
+		    	    	  dialog.dismiss();
+		    	    } });
+		    	alertDialog.show();
+				
+			}
+		});
      }
         	
         
