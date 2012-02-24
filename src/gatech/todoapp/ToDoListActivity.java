@@ -27,12 +27,14 @@ public class ToDoListActivity extends Activity {
     	
     	//TREY'S TEST CODE FOR TESTING DB STUFF
     	db = new DatabaseUtil(this);
+    	//This next line will reset the database
     	//db.onUpgrade(db.getWritableDatabase(), 1, 2);
+    	//register a user here (it's all local so you have to register users on your machine)
     	//User newUser = new User("Trey Moore", "Trey", "trey@email.com", "123");
     	//db.registerUser(newUser);
     	
-    	//Correct password is 123
-    	User currentUser = db.loginUser("Trey", "123");
+    	//user the user you registered above to test
+    	User currentUser = db.loginUser("Trey", "12");
     	
     	//Dialog box to see what info DB is getting
     	AlertDialog alertDialog = new AlertDialog.Builder(this).create();
