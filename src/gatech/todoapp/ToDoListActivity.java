@@ -9,7 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
+import android.view.View;
 import android.widget.Button;
 
 public class ToDoListActivity extends Activity {
@@ -21,8 +21,22 @@ public class ToDoListActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Button createAccount=(Button) findViewById(R.id.Button01);
-    }
+        
+        
+        //trying to make a button work.
+        Button createAccount=(Button) findViewById(R.id.register);
+        createAccount.setOnClickListener(new View.OnClickListener(){
+        	public void onClick(View v){
+        		
+        	   Intent i = new Intent(ToDoListActivity.this, CreateAccountActivity.class);
+               startActivity(i);
+        	}
+            });
+        	
+     }
+        	
+        
+    
     
     @Override
 	public void onStart()
@@ -59,20 +73,7 @@ public class ToDoListActivity extends Activity {
     	//END TREY'S TEST CODE
     	
 	}
-    private void handleButtonClick()
-    {
-    	startActivity(new Intent(this, CreateAccountActivity.class));
-    }
-    
-    private class ButtonHandler implements View.OnClickListener
-    {
-    	
-	public void onClick(View v)
-	{
-		handleButtonClick();
-	}	
-	
-    }
+
     
     
     
