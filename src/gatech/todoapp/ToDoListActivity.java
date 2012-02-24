@@ -34,7 +34,7 @@ public class ToDoListActivity extends Activity {
     	//db.registerUser(newUser);
     	
     	//user the user you registered above to test
-    	User currentUser = db.loginUser("Trey", "12");
+    	User currentUser = db.loginUser("Trey", "123");
     	
     	//Dialog box to see what info DB is getting
     	AlertDialog alertDialog = new AlertDialog.Builder(this).create();
