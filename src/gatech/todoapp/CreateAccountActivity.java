@@ -21,6 +21,7 @@ import android.widget.EditText;
 public class CreateAccountActivity extends Activity {
 
     DatabaseUtil db;
+    User currentUser;
 
 	@Override
 	 public void onCreate(Bundle savedInstanceState) {
