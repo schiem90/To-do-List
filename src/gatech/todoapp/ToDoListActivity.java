@@ -34,6 +34,8 @@ public class ToDoListActivity extends Activity {
         		// TODO go to create account screen
         	   Intent i = new Intent(ToDoListActivity.this, CreateAccountActivity.class);
                startActivity(i);
+               
+               
         	
         	}
             });
