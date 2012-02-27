@@ -49,7 +49,7 @@ public class CreateAccountActivity extends Activity {
 		    	
 		    	boolean registered = true; 
 		    	
-		    	//checking to see if user inputs something for all text boxes
+		    	//must input something for all text boxes
 		    	if((username.equals("")) &&
 		    			(name.equals("")) &&
 		    				(password.equals("")) &&
@@ -57,12 +57,19 @@ public class CreateAccountActivity extends Activity {
 		    						(email.equals(""))){
 		    		registered = false; 
 		    	}
-		    	
+		    
 		    	if (!password.equals(repassword)) {
 		    		//passwords must match
 		    		registered = false; 
 		        }
 		    	
+		    
+		    	//username must not already be taken in database
+		    	for(User users : db.getAllUsers()){//is db suppose to be initiallized??
+		    		if(username.equals(users.getUsername())){
+		    			registered = false; 
+		    		}
+		    	}
 		    
 		    	
 		    
