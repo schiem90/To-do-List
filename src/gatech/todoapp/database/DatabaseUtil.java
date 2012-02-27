@@ -28,20 +28,20 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			//Create user table
 			String userSQL = "CREATE TABLE IF NOT EXISTS user (" +
 							"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-							"name TEXT, " +
-							"username TEXT, " +
-							"email TEXT, " +
-							"password TEXT)";
+							"name TEXT UNIQUE, " +
+							"username TEXT NOT NULL, " +
+							"email TEXT NOT NULL, " +
+							"password TEXT NOT NULL)";
 			db.execSQL(userSQL);
 			
 			String taskSQL = "CREATE TABLE IF NOT EXISTS task (" +
 					"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-					"description TEXT, " +
+					"description TEXT NOT NULL, " +
 					"location TEXT, " +
 					"date TEXT, " +
 					"comments TEXT, " +
 					"categoryID TEXT, " +
-					"userID TEXT)";
+					"userID TEXT NOT NULL)";
 			db.execSQL(taskSQL);
 			
 			

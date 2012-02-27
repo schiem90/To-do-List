@@ -11,7 +11,7 @@
         android:layout_height="match_parent" >
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -40,6 +40,7 @@
             android:layout_below="@+id/textView1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="51dp"
+            android:singleLine="true"
             android:hint="User Name"
             android:width="300px" />
 
@@ -58,13 +59,13 @@
         </EditText>
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/login"
-            android:layout_alignBottom="@+id/login"
+            android:layout_alignBaseline="@+id/loginButton"
+            android:layout_alignBottom="@+id/loginButton"
             android:layout_marginLeft="38dp"
-            android:layout_toRightOf="@+id/login"
+            android:layout_toRightOf="@+id/loginButton"
             android:layout_weight="0.04"
             android:text="Register"
             android:width="150px" />
