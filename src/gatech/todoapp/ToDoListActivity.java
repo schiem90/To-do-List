@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Activity for the main login view.
+ */
 public class ToDoListActivity extends Activity {
 	
 	DatabaseUtil db;
@@ -25,24 +28,24 @@ public class ToDoListActivity extends Activity {
         
         
         //Register button
-        Button registerButton=(Button) findViewById(R.id.registerButton);
-        registerButton.setOnClickListener(new View.OnClickListener(){
-        	public void onClick(View v){
+        Button registerButton = (Button) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
         		// TODO go to create account screen
         	   Intent i = new Intent(ToDoListActivity.this, CreateAccountActivity.class);
                startActivity(i);
         	
         	}
             });
-        Button loginButton = (Button)findViewById(R.id.loginButton);
+        Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO attempt to login (used Trey's test code)
 				//TREY'S TEST CODE FOR TESTING DB STUFF
 		    	db = new DatabaseUtil(ToDoListActivity.this);
 		    	
-		    	EditText usernameTextBox = (EditText)findViewById(R.id.usernameTextBox);
-		    	EditText passwordTextBox = (EditText)findViewById(R.id.passwordTextBox);
+		    	EditText usernameTextBox = (EditText) findViewById(R.id.usernameTextBox);
+		    	EditText passwordTextBox = (EditText) findViewById(R.id.passwordTextBox);
 		    	
 		    	//user the user you registered above to test
 		    	User currentUser = db.loginUser(usernameTextBox.getText().toString(), 
