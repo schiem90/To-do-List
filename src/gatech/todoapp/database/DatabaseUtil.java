@@ -14,24 +14,34 @@ import gatech.todoapp.domain.Category;
 import gatech.todoapp.domain.Task;
 import gatech.todoapp.domain.User;
 
+/**
+ * This class is a utility for creating and using
+ * with the database.
+ *
+ */
 public class DatabaseUtil extends SQLiteOpenHelper {
-	 
-	public static final String DATABASE_NAME = "todoListDB";
-		
-		public DatabaseUtil(Context context) {
-			super(context, DATABASE_NAME, null, 1);
-		}
+
+    public static final String DATABASE_NAME = "todoListDB";
+
+   /**
+    * Constructor calls the superclass's constructor
+    * with the current context.
+    * @param context The context
+    */
+    public DatabaseUtil(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+    }
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			
 			//Create user table
 			String userSQL = "CREATE TABLE IF NOT EXISTS user (" +
-							"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-							"name TEXT UNIQUE, " +
-							"username TEXT NOT NULL, " +
-							"email TEXT NOT NULL, " +
-							"password TEXT NOT NULL)";
+					"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+					"name TEXT UNIQUE, " +
+					"username TEXT NOT NULL, " +
+					"email TEXT NOT NULL, " +
+					"password TEXT NOT NULL)";
 			db.execSQL(userSQL);
 			
 			String taskSQL = "CREATE TABLE IF NOT EXISTS task (" +
@@ -46,19 +56,18 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			
 			
 			String categorySQL = "CREATE TABLE IF NOT EXISTS category (" +
-				"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-				"name TEXT, " +
-				"userID TEXT)";
+					"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+					"name TEXT, " +
+					"userID TEXT)";
 			db.execSQL(categorySQL);
 			
 			String sessionSQL = "CREATE TABLE IF NOT EXISTS currentSession (" +
 					"userID TEXT)";
 			db.execSQL(sessionSQL);
-			
-			ContentValues values = new ContentValues();
 
 			//Test Data
 			/*
+			ContentValues values = new ContentValues();
 			values.put("name", "Trey Moore");
 			values.put("username", "Trey");
 			values.put("email", "trey@email.com");
@@ -80,9 +89,13 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		//USER MANAGEMENT
 		
 		//THIS IS JUST A TEST METHOD, DELETE AFTER TESTING
+		/**
+		 * Gets a list of all users in the database.
+		 * @return A list of users in the database
+		 */
 		public List<User> getAllUsers() {
 			
-			SQLiteDatabase db=this.getReadableDatabase();
+			SQLiteDatabase db = this.getReadableDatabase();
 			List<User> users = new ArrayList<User>();
 			
 			Cursor cursor = db.rawQuery("SELECT * FROM user", null);
@@ -99,7 +112,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		}
 		
 		/**
-		 * Saves a new user into the database
+		 * Saves a new user into the database.
 		 * @param user The new user to save
 		 * @return The newly registered user
 		 */
@@ -121,7 +134,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		
 		//TASK MANAGEMENT
 		/**
-		 * Saves a task to the database for the specified user
+		 * Saves a task to the database for the specified user.
 		 * @param task The task to save
 		 * @param userID The user the task belongs to
 		 * @return The saved task
