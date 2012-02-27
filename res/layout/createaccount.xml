@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:layout_weight="0.04"
+            android:text="Create Account"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="97dp"
+            android:hint="Enter Name"
+            android:width="300px" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="18dp"
+            android:layout_weight="0.04"
+            android:text="Register"
+            android:width="150px" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_alignRight="@+id/name"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="38dp"
+            android:hint="Enter User Name" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_centerVertical="true"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:width="300px" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/register"
+            android:layout_alignLeft="@+id/password"
+            android:layout_marginBottom="22dp"
+            android:hint="Enter Email"
+            android:inputType="textPassword"
+            android:width="300px" />
+
+        <EditText
+            android:id="@+id/repassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/password"
+            android:layout_below="@+id/password"
+            android:layout_marginTop="16dp"
+            android:hint="ReEnter Password"
+            android:inputType="textPassword"
+            android:width="300px" />
+
+    </RelativeLayout>
+
+</LinearLayout>
