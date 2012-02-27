@@ -43,20 +43,35 @@ public class CreateAccountActivity extends Activity {
 		    	String repassword = repasswordTextBox.getText().toString();
 		    	String email = emailTextBox.getText().toString();
 		    	
-		    	if (!password.equals(repassword)) {
-		    		//passwords must match
+		    	boolean registered = true; 
+		    	
+		    	//checking to see if user inputs something for all text boxes
+		    	if((username.equals("")) &&
+		    			(name.equals("")) &&
+		    				(password.equals("")) &&
+		    					(repassword.equals("")) &&
+		    						(email.equals(""))){
+		    		registered = false; 
 		    	}
 		    	
-		    	User newUser = new User(name, username, email, password);
-		    	newUser = db.registerUser(newUser);
+		    	if (!password.equals(repassword)) {
+		    		//passwords must match
+		    		registered = false; 
+		        }
+		    	
+		    
+		    	
+		    
 		    	
 		    	AlertDialog alertDialog = new AlertDialog.Builder(CreateAccountActivity.this).create();
 		    	alertDialog.setTitle("New User");
 
 		    	//login failed
-		    	if (newUser == null) {
+		    	if (registered == false) {
 		    		alertDialog.setMessage("Registration Failed");
 		    	} else {
+		    		User newUser = new User(name, username, email, password);
+			    	newUser = db.registerUser(newUser);
 		    		alertDialog.setMessage("User ID: " + newUser.getID() + "\n Name: " + newUser.getName());
 		    	}    	
 
@@ -69,6 +84,7 @@ public class CreateAccountActivity extends Activity {
         });
         
         //TODO Add cancel button to take user back to login screen
+        
         
     }
 }
