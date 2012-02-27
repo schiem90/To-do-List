@@ -14,11 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
+/**
+ * This class is the activity for the create account view.
+ *
+ */
 public class CreateAccountActivity extends Activity {
-	
-	DatabaseUtil db;
-	
+
+    DatabaseUtil db;
+
 	@Override
 	 public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +30,16 @@ public class CreateAccountActivity extends Activity {
         db = new DatabaseUtil(CreateAccountActivity.this);
         
         Button registerButton = (Button) findViewById(R.id.registerButton);
-        final EditText usernameTextBox  = (EditText)findViewById(R.id.username);
-        final EditText nameTextBox  = (EditText)findViewById(R.id.name);
-        final EditText passwordTextBox  = (EditText)findViewById(R.id.password);
-        final EditText repasswordTextBox  = (EditText)findViewById(R.id.repassword);
-        final EditText emailTextBox  = (EditText)findViewById(R.id.email);
+        final EditText usernameTextBox  = (EditText) findViewById(R.id.username);
+        final EditText nameTextBox  = (EditText) findViewById(R.id.name);
+        final EditText passwordTextBox  = (EditText) findViewById(R.id.password);
+        final EditText repasswordTextBox  = (EditText) findViewById(R.id.repassword);
+        final EditText emailTextBox  = (EditText) findViewById(R.id.email);
         
         
         //Register procedure
-        registerButton.setOnClickListener(new View.OnClickListener(){
-        	public void onClick(View v){
+        registerButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
         		String username = usernameTextBox.getText().toString();
         		String name = nameTextBox.getText().toString();
 		    	String password = passwordTextBox.getText().toString();

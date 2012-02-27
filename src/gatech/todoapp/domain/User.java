@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This class represents a user of the application.
  */
 public class User {
-	
+
 	private Integer ID;
 	private String name;
 	private String email;
@@ -14,11 +14,15 @@ public class User {
 	private String password;
 	private ArrayList<Task> tasks;
 	
+	/**
+	 * Default constructor makes a new user with a null ID.
+	 */
 	public User() {
 		this.ID = null;
 	}
+	
 	/**
-	 * Creates a new user with the given parameters
+	 * Creates a new user with the given parameters.
 	 * @param name The name of the user
 	 * @param email The user's email address
 	 * @param username The username to login with
