@@ -87,7 +87,14 @@ public class CreateAccountActivity extends Activity {
         });
         
         //TODO Add cancel button to take user back to login screen
+        Button cancelButton = (Button) findViewById(R.id.cancelRegisterButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+        		Intent i = new Intent(CreateAccountActivity.this, ToDoListActivity.class);
+                startActivity(i);
+        	}
         
+    });
         
-    }
+	}
 }

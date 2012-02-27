@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:baselineAligned="false"
     android:orientation="horizontal" >
-
+
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_weight="0.04"
             android:text="Create Account"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
         <EditText
             android:id="@+id/name"
             android:layout_width="wrap_content"
@@ -31,18 +31,7 @@
             android:hint="Enter Name"
             android:singleLine="true"
             android:width="300px" />
-
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="18dp"
-            android:layout_weight="0.04"
-            android:text="Register"
-            android:width="150px" />
-
+
         <EditText
             android:id="@+id/username"
             android:layout_width="wrap_content"
@@ -53,7 +42,7 @@
             android:layout_marginTop="38dp"
             android:hint="Enter User Name"
             android:singleLine="true" />
-
+
         <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
@@ -66,7 +55,8 @@
             android:width="300px" >
 
             <requestFocus />
-        </EditText>
+        </EditText>
+
         <EditText
             android:id="@+id/repassword"
             android:layout_width="wrap_content"
@@ -78,17 +68,39 @@
             android:inputType="textPassword"
             android:singleLine="true"
             android:width="300px" />
-        
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/repassword"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="26dp"
+            android:layout_weight="0.04"
+            android:text="Register"
+            android:width="150px" />
+
         <EditText
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/registerButton"
-            android:layout_alignLeft="@+id/password"
-            android:layout_marginBottom="22dp"
+            android:layout_alignLeft="@+id/registerButton"
+            android:layout_marginBottom="15dp"
             android:hint="Enter Email"
             android:singleLine="true"
             android:width="300px" />
+
+        <Button
+            android:id="@+id/cancelRegisterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/registerButton"
+            android:layout_alignBottom="@+id/registerButton"
+            android:layout_alignRight="@+id/email"
+            android:layout_weight="0.04"
+            android:text="Cancel"
+            android:width="150px" />
 
     </RelativeLayout>
 
