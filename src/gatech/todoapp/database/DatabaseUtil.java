@@ -35,7 +35,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			
-			//Create user table
+			//Create database tables
 			String userSQL = "CREATE TABLE IF NOT EXISTS user (" +
 					"id INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 					"name TEXT UNIQUE, " +
@@ -205,7 +205,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		}
 		
 		/**
-		 * Gets all tasks for a user with the specific ID
+		 * Gets all tasks for a user with the specific ID.
 		 * @param userID The user to get tasks for
 		 * @return A list of Tasks for the user
 		 */
@@ -286,7 +286,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		public User loginUser(String username, String password) {
 			SQLiteDatabase db = this.getReadableDatabase();
 			//check login
-			String[] params=new String[]{username, password};
+			String[] params = new String[]{username, password};
 			Cursor cursor = db.rawQuery("SELECT * FROM user WHERE username=? AND password=?", params);
 			
 			//get user

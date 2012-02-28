@@ -24,6 +24,10 @@ public class CreateAccountActivity extends Activity {
     User currentUser;
 
 	@Override
+	
+	/**
+	 * Called when the activity is first created.
+	 */
 	 public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createaccount);
@@ -40,6 +44,10 @@ public class CreateAccountActivity extends Activity {
         
         //Register procedure
         registerButton.setOnClickListener(new View.OnClickListener() {
+        	/**
+        	 * Registers and creates a new user if credentials are valid
+        	 * @param v needed to view the model
+        	 */
         	public void onClick(View v) {
         		String username = usernameTextBox.getText().toString();
         		String name = nameTextBox.getText().toString();
@@ -94,9 +102,15 @@ public class CreateAccountActivity extends Activity {
         	}
         });
         
-        //TODO Add cancel button to take user back to login screen
+        
         Button cancelButton = (Button) findViewById(R.id.cancelRegisterButton);
+        
+      
         cancelButton.setOnClickListener(new View.OnClickListener() {
+        	/**
+        	 * Takes the user back to login screen when cancel button is clicked
+        	 * @param v needed to view the model
+        	 */
         	public void onClick(View v) {
         		Intent i = new Intent(CreateAccountActivity.this, ToDoListActivity.class);
                 startActivity(i);
