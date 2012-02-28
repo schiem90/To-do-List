@@ -65,8 +65,8 @@ public class CreateAccountActivity extends Activity {
 		    	
 		    
 		    	//username must not already be taken in database
-		    	for(User users : db.getAllUsers()){//is db suppose to be initiallized??
-		    		if(username.equals(users.getUsername())){
+		    	for (User users : db.getAllUsers()) {
+		    		if (username.equals(users.getUsername())) {
 		    			registered = false; 
 		    		}
 		    	}

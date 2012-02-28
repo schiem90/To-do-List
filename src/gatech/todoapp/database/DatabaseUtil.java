@@ -124,10 +124,48 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			values.put("username", user.getUsername());
 			values.put("email", user.getEmail());
 			values.put("password", user.getPassword());
-			db.insert("user", "name", values);
+			db.insert("user", "name", values);			
 			db.close();
 			
+			user = populateUserByUsername(user.getUsername());
+			
 			//Get the ID from the database
+			
+			return user;
+		}
+		
+		/**
+		 * Populates a user's information.
+		 * @param username The username of the user to populate
+		 * @return The populated user
+		 */
+		private User populateUserByUsername(String username) {
+			User user = new User();
+			SQLiteDatabase db = this.getReadableDatabase();
+			String[] params = new String[]{username};
+			Cursor cursor = db.rawQuery("SELECT * FROM user WHERE username=?", params);
+			cursor.moveToFirst();
+			user = populateUserFromCursor(cursor);
+			cursor.close();		
+			
+			
+			db.close();
+			return user;
+		}
+		
+		/**
+		 * Populates a user from a cursor.
+		 * @param cursor The cursor result from a query
+		 * @return The populated user
+		 */
+		private User populateUserFromCursor(Cursor cursor) {
+			User user = new User();
+			user.setID(cursor.getInt(0));
+			user.setName(cursor.getString(1));
+			user.setUsername(cursor.getString(2));
+			user.setEmail(cursor.getString(3));
+			user.setPassword(cursor.getString(4));
+			user.setTasks(getTasksForUser(user.getID()));
 			
 			return user;
 		}
@@ -157,6 +195,11 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			return task;
 		}
 		
+		/**
+		 * Deletes a task from the database.
+		 * @param task The task to delete
+		 * @param userID The user the task belongs to
+		 */
 		public void deleteTask(Task task, Integer userID) {
 			
 		}
@@ -171,10 +214,10 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 				//ERROR
 			}
 			
-			SQLiteDatabase db=this.getReadableDatabase();
+			SQLiteDatabase db = this.getReadableDatabase();
 			List<Task> tasks = new ArrayList<Task>();
 			
-			String[] params=new String[]{String.valueOf(userID)};
+			String[] params = new String[]{String.valueOf(userID)};
 			Cursor cursor = db.rawQuery("SELECT * FROM task WHERE userID=?", params);
 			
 			cursor.moveToFirst();
@@ -189,7 +232,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		}
 	
 		/**
-		 * Populates a task from a cursor
+		 * Populates a task from a cursor.
 		 * @param cursor The cursor containing the Task's data
 		 * @return The task the cursor contains
 		 */
@@ -206,7 +249,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		
 		//CATEGORY MANAGEMENT
 		/**
-		 * Creates a category for the specific user
+		 * Creates a category for the specific user.
 		 * @param category The category to create
 		 * @param userID The ID of the user creating the category
 		 * @return The new category 
@@ -235,7 +278,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		}
 		
 		/**
-		 * Attempts to log in a user, returning user if successful or null if failed
+		 * Attempts to log in a user, returning user if successful or null if failed.
 		 * @param username The username entered for login
 		 * @param password The password entered for login
 		 * @return A logged in user or null
@@ -257,22 +300,5 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 				return null;
 			}
 			
-		}
-		
-		/**
-		 * Populates a user from a cursor
-		 * @param cursor The cursor result from a query
-		 * @return The populated user
-		 */
-		private User populateUserFromCursor(Cursor cursor) {
-			User user = new User();
-			user.setID(cursor.getInt(0));
-			user.setName(cursor.getString(1));
-			user.setUsername(cursor.getString(2));
-			user.setEmail(cursor.getString(3));
-			user.setPassword(cursor.getString(4));
-			
-			return user;
-		}
-	
+		}	
 }
