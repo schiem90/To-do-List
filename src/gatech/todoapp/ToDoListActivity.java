@@ -31,7 +31,10 @@ public class ToDoListActivity extends Activity {
         Button registerButton = (Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View v) {
-        		// TODO go to create account screen
+        		/**
+            	 * Takes the user to the register screen when button is clicked
+            	 * @param v needed to view the model
+            	 */
         	   Intent i = new Intent(ToDoListActivity.this, CreateAccountActivity.class);
                startActivity(i);
                
@@ -41,6 +44,10 @@ public class ToDoListActivity extends Activity {
             });
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
+        	/**
+        	 * Logs the user in when button is clicked if credentials match with those found in database
+        	 * @param v needed to view the model
+        	 */
 			public void onClick(View v) {
 				// TODO attempt to login (used Trey's test code)
 				//TREY'S TEST CODE FOR TESTING DB STUFF
@@ -77,6 +84,9 @@ public class ToDoListActivity extends Activity {
     
     
     @Override
+    /**
+	 * called when activity becomes visible to user
+	 */
 	public void onStart()
 	{
     	super.onStart();
