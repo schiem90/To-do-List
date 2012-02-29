@@ -9,8 +9,26 @@ public class Category {
 	private Integer ID;
 	private String name;
 	
+	/**
+	 * Constructor that creates a new category with a null ID.
+	 */
 	public Category() {
 		this.ID = null;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+	    if (other == null) 
+	    	return false;
+	    if (other == this) 
+	    	return true;
+	    if (!(other instanceof Category))
+	    	return false;
+	    Category otherCategory = (Category) other;
+	    if (ID.equals(otherCategory.getID()))
+	    	return true;
+	    
+	    return false;
 	}
 	
 	/**
