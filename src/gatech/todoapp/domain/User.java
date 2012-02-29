@@ -13,6 +13,7 @@ public class User {
 	private String username;
 	private String password;
 	private List<Task> tasks;
+	private List<Task> filteredTasks;
 	
 	/**
 	 * Default constructor makes a new user with a null ID.
@@ -117,6 +118,20 @@ public class User {
 	 */
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+	/**
+	 * @return the filteredTasks
+	 */
+	public List<Task> getFilteredTasks() {
+		return filteredTasks;
+	}
+
+	/**
+	 * @param filteredTasks the filteredTasks to set
+	 */
+	public void setFilteredTasks(List<Task> filteredTasks) {
+		this.filteredTasks = filteredTasks;
 	}
 
 }

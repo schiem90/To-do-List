@@ -1,4 +1,4 @@
-package gatech.todoapp.database;
+package gatech.todoapp.util;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -201,7 +201,9 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		 * @param userID The user the task belongs to
 		 */
 		public void deleteTask(Task task, Integer userID) {
-			
+			SQLiteDatabase db = this.getWritableDatabase();
+			String[] params = new String[]{task.getDescription(), String.valueOf(userID)};
+			db.delete("task", "WHERE description=? AND userID=?", params);
 		}
 		
 		/**
