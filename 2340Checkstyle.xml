@@ -5,9 +5,9 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: 2340 App Checkstyle
+    Checkstyle-Configuration: 2340 Checkstyle
     Description: 
-Custom Checkstyle for the 2340 android app
+Checkstyle for 2340 Android app
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>
@@ -28,5 +28,4 @@ Custom Checkstyle for the 2340 android app
     <module name="WhitespaceAfter"/>
     <module name="ConstantName"/>
   </module>
-  <module name="FileTabCharacter"/>
 </module>
