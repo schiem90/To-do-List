@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
-  <local-check-config name="2340 App Checkstyle" location="internal_config__1330320462120.xml" type="internal" description="Custom Checkstyle for the 2340 android app"/>
-  <fileset name="all" enabled="true" check-config-name="2340 App Checkstyle" local="true">
+  <local-check-config name="2340 Checkstyle" location="2340Checkstyle.xml" type="project" description="Checkstyle for 2340 Android app">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <fileset name="all" enabled="true" check-config-name="2340 Checkstyle" local="true">
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
 </fileset-config>
