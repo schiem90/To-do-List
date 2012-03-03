@@ -41,7 +41,8 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 					"name TEXT UNIQUE, " +
 					"username TEXT NOT NULL, " +
 					"email TEXT NOT NULL, " +
-					"password TEXT NOT NULL)";
+					"password TEXT NOT NULL, " +
+					"activeSession INTEGER NOT NULL)";
 			db.execSQL(userSQL);
 			
 			String taskSQL = "CREATE TABLE IF NOT EXISTS task (" +
@@ -124,6 +125,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			values.put("username", user.getUsername());
 			values.put("email", user.getEmail());
 			values.put("password", user.getPassword());
+			values.put("activeSession", 0);
 			db.insert("user", "name", values);			
 			db.close();
 			
@@ -269,14 +271,25 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		}
 		
 		//SESSION MANAGEMENT
-		public User getLastSession() {
-			User user = new User("Trey", "trey@email.com", "trey", "123");
+		/**
+		 * Gets the User that is the currently active session.
+		 * @return The user that is currently logged in
+		 */
+		public User getActiveSession() {
+			//activeSession
+			SQLiteDatabase db = this.getReadableDatabase();
+			String[] params = new String[]{((Integer) 1).toString()};  //1 is boolean true in SQLite
+			Cursor cursor = db.rawQuery("SELECT * FROM user WHERE activeSession=?", params);
 			
-			return user;
-		}
-		
-		public void setActiveSession() {
-			
+			//If there are any results in the cursor (valid login)
+			if (cursor.moveToFirst()) {
+				User currentUser = populateUserFromCursor(cursor);
+				//set current session
+				setActiveSession(currentUser.getID());
+				return currentUser;
+			} else {
+				return null;
+			}
 		}
 		
 		/**
@@ -296,11 +309,35 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			if (cursor.moveToFirst()) {
 				User currentUser = populateUserFromCursor(cursor);
 				//set current session
-				//setActiveSession(currentUser)
+				setActiveSession(currentUser.getID());
 				return currentUser;
 			} else {
 				return null;
-			}
-			
-		}	
+			}			
+		}
+		
+		/**
+		 * Logs out the currently logged in user.
+		 */
+		public void logoutUser() {
+			SQLiteDatabase db = this.getWritableDatabase();
+			ContentValues values = new ContentValues();
+			values.put("activeSession", 0);  //0 is Boolean false
+			String[] params = new String[]{((Integer) 1).toString()};
+			db.update("user", values, "activeSession=?", params);
+			db.close();
+		}
+		
+		/**
+		 * Sets the given user as the current active session.
+		 * @param userID The Id of the user that is currently logged in
+		 */
+		private void setActiveSession(Integer userID) {
+			SQLiteDatabase db = this.getWritableDatabase();
+			ContentValues values = new ContentValues();
+			values.put("activeSession", 1);  //1 is Boolean true
+			String[] params = new String[]{userID.toString()};
+			db.update("user", values, "id=?", params);
+			db.close();
+		}
 }

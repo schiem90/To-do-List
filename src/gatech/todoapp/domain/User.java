@@ -52,6 +52,11 @@ public class User {
 	    return false;
 	}
 	
+	@Override
+	public String toString() {
+		return "Username: " + username + " Name: " + name;
+	}
+	
 	/**
 	 * @return the ID
 	 */
