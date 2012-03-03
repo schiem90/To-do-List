@@ -58,11 +58,11 @@ public class CreateAccountActivity extends Activity {
 		    	boolean registered = true; 
 		    	
 		    	//must input something for all text boxes
-		    	if((username.equals("")) &&
+		    	if ((username.equals("")) &&
 		    			(name.equals("")) &&
 		    				(password.equals("")) &&
 		    					(repassword.equals("")) &&
-		    						(email.equals(""))){
+		    						(email.equals(""))) {
 		    		registered = false; 
 		    	}
 		    
@@ -88,17 +88,18 @@ public class CreateAccountActivity extends Activity {
 		    	//login failed
 		    	if (registered == false) {
 		    		alertDialog.setMessage("Registration Failed");
+		    		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			    	      public void onClick(DialogInterface dialog, int which) {
+			    	    	  dialog.dismiss();
+			    	    } });
+			    	alertDialog.show();
 		    	} else {
 		    		User newUser = new User(name, username, email, password);
 			    	newUser = db.registerUser(newUser);
-		    		alertDialog.setMessage("User ID: " + newUser.getID() + "\n Name: " + newUser.getName());
-		    	}    	
-
-		    	  alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-		    	      public void onClick(DialogInterface dialog, int which) {
-		    	    	  dialog.dismiss();
-		    	    } });
-		    	alertDialog.show();
+			    	Intent i = new Intent(CreateAccountActivity.this, ToDoListActivity.class);
+	                startActivity(i);
+		    		//alertDialog.setMessage("User ID: " + newUser.getID() + "\n Name: " + newUser.getName());
+		    	}
         	}
         });
         
