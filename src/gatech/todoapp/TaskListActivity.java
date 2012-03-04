@@ -33,8 +33,8 @@ public class TaskListActivity extends ListActivity {
 
 	  setContentView(R.layout.main);
       
-      list=(ListView)findViewById(R.id.list);
-      adapter=new TaskAdapter(this,db.getTasksForUser(currentUser.getID()));
+      list = (ListView) findViewById(R.id.list);
+      adapter = new TaskAdapter(this, db.getTasksForUser(currentUser.getID()));
       list.setAdapter(adapter);
       
 	  };
