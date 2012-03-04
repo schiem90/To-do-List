@@ -61,7 +61,6 @@ public class ToDoListActivity extends Activity {
 		    	//login failed
 		    	if (currentUser == null) {
 		    		alertDialog.setMessage("Login Failed");
-		    		alertDialog.setMessage("User ID: " + currentUser.getID() + "\n Name: " + currentUser.getName());
 			    	  alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 			    	      public void onClick(DialogInterface dialog, int which) {
 			    	    	  dialog.dismiss();
@@ -69,7 +68,9 @@ public class ToDoListActivity extends Activity {
 			    	alertDialog.show();
 		    	} else {
 		    		Log.v("Todo List Session", "Logged in as: " + db.getActiveSession());
-		    	}				
+		    		//Remove once we have a logout button
+		    		db.logoutUser();
+		    	}			
 			}
 		});
      }
@@ -88,8 +89,4 @@ public class ToDoListActivity extends Activity {
     	//db.onUpgrade(db.getWritableDatabase(), 2, 3);
     	
 	}
-
-    
-    
-    
 }
