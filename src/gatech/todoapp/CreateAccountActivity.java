@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,6 +97,7 @@ public class CreateAccountActivity extends Activity {
 		    	} else {
 		    		User newUser = new User(name, username, email, password);
 			    	newUser = db.registerUser(newUser);
+			    	Log.v("New Account", "Created New User: " + db.getActiveSession());
 			    	Intent i = new Intent(CreateAccountActivity.this, ToDoListActivity.class);
 	                startActivity(i);
 		    		//alertDialog.setMessage("User ID: " + newUser.getID() + "\n Name: " + newUser.getName());

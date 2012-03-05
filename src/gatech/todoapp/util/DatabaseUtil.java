@@ -76,6 +76,25 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			db.insert("user", "name", values);
 			*/
 			
+			//Testing Tasks
+			ContentValues values = new ContentValues();
+			values.put("description", "Do Shit");
+			values.put("location", "Ma House");
+			values.put("date", (new Date()).toString());
+			values.put("comments", "This is a task for userID 1");
+			values.put("categoryID", 1);
+			values.put("userID", 1);
+			db.insert("task", "location", values);
+			
+			values = new ContentValues();
+			values.put("description", "More Stuff");
+			values.put("location", "Yo House");
+			values.put("date", (new Date()).toString());
+			values.put("comments", "This is another task for userID 1");
+			values.put("categoryID", 1);
+			values.put("userID", 1);
+			db.insert("task", "location", values);
+			
 		}
 
 		@Override
@@ -234,6 +253,23 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			cursor.close();
 			return tasks;
 		}
+		
+		public List<Task> getAllTasks() {			
+			SQLiteDatabase db = this.getReadableDatabase();
+			List<Task> tasks = new ArrayList<Task>();
+			
+			Cursor cursor = db.rawQuery("SELECT * FROM task", null);
+			
+			cursor.moveToFirst();
+			while (!cursor.isAfterLast()) {
+				Task task = cursorToTask(cursor);
+				tasks.add(task);
+				cursor.moveToNext();
+			}
+			// Make sure to close the cursor
+			cursor.close();
+			return tasks;
+		}
 	
 		/**
 		 * Populates a task from a cursor.
@@ -247,6 +283,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			task.setLocation(cursor.getString(2));
 			task.setDate(new Date(Date.parse(cursor.getString(3))));		
 			task.setComments(cursor.getString(4));
+			task.setCategory(new Category());
 			//task.setCategory(populateCategory(cursor.getString(5)));
 			return task;
 		}

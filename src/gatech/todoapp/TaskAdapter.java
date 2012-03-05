@@ -1,5 +1,6 @@
 package gatech.todoapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gatech.todoapp.domain.Task;
@@ -16,65 +17,52 @@ import android.widget.TextView;
  */
 public class TaskAdapter extends BaseAdapter {
 
-	private Activity activity;
-    private List<Task> data;
-    private static LayoutInflater inflater = null;
-    
-    /**
-     * TaskAdapter constructor.
-     * @param a activity 
-     * @param d data
-     */
-    public TaskAdapter(Activity a, List<Task> d) {
-        activity = a;
-        data = d;
-        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-    
-    /**
-     * Gets the count of tasks.
-     * @return count of tasks
-     */
-    public int getCount() {
-        return data.size();
-    }
+	 private static ArrayList<Task> taskList;
+	 
+	 private LayoutInflater mInflater;
 
-    /**
-     * Gets the item at the position specified.
-     * @param position 
-     * @return the item at that position
-     * 
-     */
-    public Object getItem(int position) {
-        return position;
-    }
+	 public TaskAdapter(Context context, ArrayList<Task> results) {
+	  taskList = results;
+	  mInflater = LayoutInflater.from(context);
+	 }
 
-    /**
-     * Gets the id of the item at the specified position.
-     * @param position - the position of the item
-     * @return the id of the item
-     */
-    public long getItemId(int position) {
-        return position;
-    }
-    
-    /**
-     * Gets the view for the list.
-     * 
-     * @param position - position to start at
-     * @param convertView - whether to convert the view to anything special
-     * @param parent - the parent of the view
-     * @return vi - the view for the list
-     */
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View vi = convertView;
-        
-        if (convertView == null)
-            vi = inflater.inflate(R.layout.tasklist_item, null);
+	 public int getCount() {
+	  return taskList.size();
+	 }
 
-        TextView text = (TextView) vi.findViewById(R.id.text);
-        text.setText("item " + position);
-        return vi;
-    }
-}
+	 public Object getItem(int position) {
+	  return taskList.get(position);
+	 }
+
+	 public long getItemId(int position) {
+	  return position;
+	 }
+
+	 public View getView(int position, View convertView, ViewGroup parent) {
+	  ViewHolder holder;
+	  if (convertView == null) {
+	   convertView = mInflater.inflate(R.layout.tasklist_row, null);
+	   holder = new ViewHolder();
+	   holder.txtName = (TextView) convertView.findViewById(R.id.name);
+	   holder.txtCityState = (TextView) convertView.findViewById(R.id.cityState);
+	   holder.txtPhone = (TextView) convertView.findViewById(R.id.phone);
+
+	   convertView.setTag(holder);
+	  } else {
+	   holder = (ViewHolder) convertView.getTag();
+	  }
+	  
+	  holder.txtName.setText(taskList.get(position).getDescription());
+	  holder.txtCityState.setText(taskList.get(position).getLocation());
+	  holder.txtPhone.setText(taskList.get(position).getDate().toLocaleString());
+
+	  return convertView;
+	 }
+
+	 static class ViewHolder {
+	  TextView txtName;
+	  TextView txtCityState;
+	  TextView txtPhone;
+	 }
+	}
 
