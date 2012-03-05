@@ -76,32 +76,13 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			db.insert("user", "name", values);
 			*/
 			
-			//Testing Tasks
-			ContentValues values = new ContentValues();
-			values.put("description", "Do Shit");
-			values.put("location", "Ma House");
-			values.put("date", (new Date()).toString());
-			values.put("comments", "This is a task for userID 1");
-			values.put("categoryID", 1);
-			values.put("userID", 1);
-			db.insert("task", "location", values);
-			
-			values = new ContentValues();
-			values.put("description", "More Stuff");
-			values.put("location", "Yo House");
-			values.put("date", (new Date()).toString());
-			values.put("comments", "This is another task for userID 1");
-			values.put("categoryID", 1);
-			values.put("userID", 1);
-			db.insert("task", "location", values);
-			
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("DROP TABLE IF EXISTS user");
 			db.execSQL("DROP TABLE IF EXISTS task");
-			db.execSQL("DROP TABLE IF EXISTS caegory");
+			db.execSQL("DROP TABLE IF EXISTS category");
 			db.execSQL("DROP TABLE IF EXISTS userID");
 			onCreate(db);
 		}

@@ -21,8 +21,8 @@ public class TaskAdapter extends BaseAdapter {
 	 
 	 private LayoutInflater mInflater;
 
-	 public TaskAdapter(Context context, ArrayList<Task> results) {
-	  taskList = results;
+	 public TaskAdapter(Context context, ArrayList<Task> tasks) {
+	  taskList = tasks;
 	  mInflater = LayoutInflater.from(context);
 	 }
 
@@ -43,26 +43,26 @@ public class TaskAdapter extends BaseAdapter {
 	  if (convertView == null) {
 	   convertView = mInflater.inflate(R.layout.tasklist_row, null);
 	   holder = new ViewHolder();
-	   holder.txtName = (TextView) convertView.findViewById(R.id.name);
-	   holder.txtCityState = (TextView) convertView.findViewById(R.id.cityState);
-	   holder.txtPhone = (TextView) convertView.findViewById(R.id.phone);
+	   holder.txtDescription = (TextView) convertView.findViewById(R.id.descriptionText);
+	   holder.txtLocation = (TextView) convertView.findViewById(R.id.locationText);
+	   holder.txtDate = (TextView) convertView.findViewById(R.id.dateText);
 
 	   convertView.setTag(holder);
 	  } else {
 	   holder = (ViewHolder) convertView.getTag();
 	  }
 	  
-	  holder.txtName.setText(taskList.get(position).getDescription());
-	  holder.txtCityState.setText(taskList.get(position).getLocation());
-	  holder.txtPhone.setText(taskList.get(position).getDate().toLocaleString());
+	  holder.txtDescription.setText(taskList.get(position).getDescription());
+	  holder.txtLocation.setText(taskList.get(position).getLocation());
+	  holder.txtDate.setText(taskList.get(position).getDate().toLocaleString());
 
 	  return convertView;
 	 }
 
 	 static class ViewHolder {
-	  TextView txtName;
-	  TextView txtCityState;
-	  TextView txtPhone;
+	  TextView txtDescription;
+	  TextView txtLocation;
+	  TextView txtDate;
 	 }
 	}
 
