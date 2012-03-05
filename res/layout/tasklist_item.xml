@@ -7,7 +7,7 @@ android:layout_height="fill_parent"
 >
 
 <ListView
-    android:id="@+id/list"
+    android:id="@+id/taskList"
     android:layout_width="wrap_content"
     android:layout_height="462dp" />
 <TextView android:id="@+id/text"

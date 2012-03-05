@@ -1,8 +1,5 @@
 package gatech.todoapp;
 
-import com.android.demo.notepad1.NotesDbAdapter;
-import com.android.demo.notepad1.R;
-
 import gatech.todoapp.domain.Task;
 import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
@@ -39,7 +36,14 @@ public class TaskListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasklist_item);
         db = new DatabaseUtil(this);
-        fillData();
+        //fillData();
+        
+        ListView lv = (ListView) findViewById(R.id.taskList);
+        
+        ArrayAdapter<Task> arrayAdapter =      
+                new ArrayAdapter<Task>(this, R.id.taskListRow, db.getTasksForUser(1));
+                lv.setAdapter(arrayAdapter); 
+                setContentView(R.layout.tasklist_item);
     }
 
     @Override
@@ -55,24 +59,18 @@ public class TaskListActivity extends ListActivity {
     	switch (item.getItemId()) {
         
     	case INSERT_ID1:
-            createTask();
+            //createTask();
             return true;
         
     	case INSERT_ID2:
-    		deleteTask();
+    		//deleteTask();
     		
     	}
     	
         return super.onOptionsItemSelected(item);
     }
     
-    private void createTask() {
-        String taskName = "Task " + taskNumber++;
-        Task t = new Task(taskName, );
-        db.saveTask(t, currentUser.getID());
-        fillData();
-    }
-    
+    /*
 //    TODO
       private void deleteTask() {
 //    	
@@ -91,5 +89,5 @@ public class TaskListActivity extends ListActivity {
         SimpleCursorAdapter notes =
             new SimpleCursorAdapter(this, R.layout.notes_row, c, from, to);
         setListAdapter(notes);
-    }
+    } */
 }
