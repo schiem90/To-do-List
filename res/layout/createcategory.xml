@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+	android:id="@+id/widget0"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<Button
+	android:id="@+id/cancel"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Cancel"
+	android:layout_x="175dp"
+	android:layout_y="345dp" />
+
+<EditText
+    android:id="@+id/widget34"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_x="100dp"
+    android:layout_y="174dp"
+    android:text="Enter Name"
+    android:textSize="18sp" />
+
+<Button
+    android:id="@+id/Create"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_x="83dp"
+    android:layout_y="346dp"
+    android:text="Create" />
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_x="105dp"
+    android:layout_y="26dp"
+    android:text="Large Text"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+</AbsoluteLayout>
