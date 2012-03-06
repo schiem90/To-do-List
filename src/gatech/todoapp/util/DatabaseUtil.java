@@ -187,7 +187,10 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			values.put("location", task.getLocation());
 			values.put("date", task.getDate().toString());
 			values.put("comments", task.getComments());
-			values.put("categoryID", task.getCategory().getID());
+			if (task.getCategory() != null)
+				values.put("categoryID", task.getCategory().getID());
+			else
+				values.put("categoryID", -1);
 			values.put("userID", userID);
 			db.insert("task", "location", values);
 			db.close();
@@ -199,13 +202,13 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		
 		/**
 		 * Deletes a task from the database.
-		 * @param task The task to delete
+		 * @param taskID The ID of the task to delete
 		 * @param userID The user the task belongs to
 		 */
-		public void deleteTask(Task task, Integer userID) {
+		public void deleteTask(Integer taskID, Integer userID) {
 			SQLiteDatabase db = this.getWritableDatabase();
-			String[] params = new String[]{task.getDescription(), String.valueOf(userID)};
-			db.delete("task", "WHERE description=? AND userID=?", params);
+			String[] params = new String[]{taskID.toString(), String.valueOf(userID)};
+			db.delete("task", "id=? AND userID=?", params);
 		}
 		
 		/**
@@ -223,23 +226,6 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			
 			String[] params = new String[]{String.valueOf(userID)};
 			Cursor cursor = db.rawQuery("SELECT * FROM task WHERE userID=?", params);
-			
-			cursor.moveToFirst();
-			while (!cursor.isAfterLast()) {
-				Task task = cursorToTask(cursor);
-				tasks.add(task);
-				cursor.moveToNext();
-			}
-			// Make sure to close the cursor
-			cursor.close();
-			return tasks;
-		}
-		
-		public List<Task> getAllTasks() {			
-			SQLiteDatabase db = this.getReadableDatabase();
-			List<Task> tasks = new ArrayList<Task>();
-			
-			Cursor cursor = db.rawQuery("SELECT * FROM task", null);
 			
 			cursor.moveToFirst();
 			while (!cursor.isAfterLast()) {

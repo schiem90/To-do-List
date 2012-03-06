@@ -3,6 +3,7 @@ package gatech.todoapp;
 import java.util.ArrayList;
 import java.util.Date;
 
+import gatech.todoapp.domain.Category;
 import gatech.todoapp.domain.Task;
 import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
@@ -33,26 +34,14 @@ public class TaskListActivity extends Activity {
 	    
 	  //Testing Tasks, Uncomment and run once to put 2 tasks in for user with ID 1
 	    /*
-	    SQLiteDatabase testDB = db.getWritableDatabase();
-		ContentValues values = new ContentValues();
-		values.put("description", "Some Task");
-		values.put("location", "My House");
-		values.put("date", (new Date()).toString());
-		values.put("comments", "This is a task for userID 1");
-		values.put("categoryID", 1);
-		values.put("userID", 1);
-		testDB.insert("task", "location", values);
-		
-		values = new ContentValues();
-		values.put("description", "More Stuff");
-		values.put("location", "Yo House");
-		values.put("date", (new Date()).toString());
-		values.put("comments", "This is another task for userID 1");
-		values.put("categoryID", 1);
-		values.put("userID", 1);
-		testDB.insert("task", "location", values);
-		*/
-		
+	    Task newTask = new Task("Do Homework", new Date());
+	    newTask.setComments("Comments, blah blah blah");
+	    newTask.setLocation("Somwhere");
+	    newTask.setCategory(new Category());
+	    db.saveTask(newTask, 1);
+	    */
+	    //db.deleteTask(1, 1);
+	    
 	    //This is just 1 until we get a logout button so we can not have one
 	    //user logged in forever
 	    //We also won't have to do this once we have a add task screen because

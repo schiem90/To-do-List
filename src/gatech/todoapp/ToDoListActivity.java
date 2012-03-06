@@ -78,7 +78,7 @@ public class ToDoListActivity extends Activity {
 		    		db.logoutUser();
 		    		Intent i = new Intent(ToDoListActivity.this, TaskListActivity.class);
 		               startActivity(i);
-		    	}			
+		    	}		
 			}
 		});
      }
