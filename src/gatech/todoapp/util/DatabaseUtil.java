@@ -65,17 +65,6 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			String sessionSQL = "CREATE TABLE IF NOT EXISTS currentSession (" +
 					"userID TEXT)";
 			db.execSQL(sessionSQL);
-
-			//Test Data
-			/*
-			ContentValues values = new ContentValues();
-			values.put("name", "Trey Moore");
-			values.put("username", "Trey");
-			values.put("email", "trey@email.com");
-			values.put("password", "123");
-			db.insert("user", "name", values);
-			*/
-			
 		}
 
 		@Override
