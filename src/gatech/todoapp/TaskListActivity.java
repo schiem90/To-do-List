@@ -41,12 +41,18 @@ public class TaskListActivity extends Activity {
 	    db.saveTask(newTask, 1);
 	    */
 	    //db.deleteTask(1, 1);
+	    /*
+	    Category newCategory = new Category("School Stuff");
+	    db.createCategory(newCategory, 1);
+	    Category newCategory2 = new Category("Work");
+	    db.createCategory(newCategory2, 1);
+	    */
 	    
 	    //This is just 1 until we get a logout button so we can not have one
 	    //user logged in forever
 	    //We also won't have to do this once we have a add task screen because
 	    //the currentUser(the one logged in) will already have all its tasks
-	    ArrayList<Task> userTasks = (ArrayList<Task>) db.getTasksForUser(1);
+	    ArrayList<Task> userTasks = db.getTasksForUser(1);
         
         final ListView lv1 = (ListView) findViewById(R.id.taskList);
         lv1.setAdapter(new TaskAdapter(this, userTasks));

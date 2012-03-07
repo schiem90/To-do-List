@@ -209,6 +209,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			SQLiteDatabase db = this.getWritableDatabase();
 			String[] params = new String[]{taskID.toString(), String.valueOf(userID)};
 			db.delete("task", "id=? AND userID=?", params);
+			db.close();
 		}
 		
 		/**
@@ -216,13 +217,13 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		 * @param userID The user to get tasks for
 		 * @return A list of Tasks for the user
 		 */
-		public List<Task> getTasksForUser(Integer userID) {
+		public ArrayList<Task> getTasksForUser(Integer userID) {
 			if (userID == null) {
 				//ERROR
 			}
 			
 			SQLiteDatabase db = this.getReadableDatabase();
-			List<Task> tasks = new ArrayList<Task>();
+			ArrayList<Task> tasks = new ArrayList<Task>();
 			
 			String[] params = new String[]{String.valueOf(userID)};
 			Cursor cursor = db.rawQuery("SELECT * FROM task WHERE userID=?", params);
@@ -235,6 +236,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			}
 			// Make sure to close the cursor
 			cursor.close();
+			db.close();
 			return tasks;
 		}
 	
@@ -271,6 +273,42 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			db.insert("category", "name", values);
 			db.close();
 			
+			return category;
+		}
+		
+		/**
+		 * Returns a list of all categories for the user.
+		 * @param userID The ID of the user to get categories for
+		 * @return All of the user's categories
+		 */
+		public ArrayList<Category> getCategories(Integer userID) {			
+			SQLiteDatabase db = this.getReadableDatabase();
+			ArrayList<Category> categories = new ArrayList<Category>();
+			
+			String[] params = new String[]{String.valueOf(userID)};
+			Cursor cursor = db.rawQuery("SELECT * FROM category WHERE userID=?", params);
+			
+			cursor.moveToFirst();
+			while (!cursor.isAfterLast()) {
+				Category category = cursorToCategory(cursor);
+				categories.add(category);
+				cursor.moveToNext();
+			}
+			// Make sure to close the cursor
+			cursor.close();
+			db.close();
+			return categories;
+		}
+	
+		/**
+		 * Populates a category from a cursor.
+		 * @param cursor The cursor containing the Category's data
+		 * @return The category the cursor contains
+		 */
+		private Category cursorToCategory(Cursor cursor) {
+			Category category = new Category();
+			category.setID(cursor.getInt(0));
+			category.setName(cursor.getString(1));
 			return category;
 		}
 		
