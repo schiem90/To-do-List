@@ -1,5 +1,7 @@
 package gatech.todoapp;
 
-public class CreateCategoryActivity {
+import android.app.Activity;
+
+public class CreateCategoryActivity extends Activity{
 
 }
