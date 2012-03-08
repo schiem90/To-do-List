@@ -31,6 +31,11 @@ public class Category {
 	    return false;
 	}
 	
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 	/**
 	 * @return the ID
 	 */
