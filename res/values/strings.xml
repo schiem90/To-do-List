@@ -3,8 +3,10 @@
 
     <string name="hello">Hello World, ToDoListActivity!</string>
     <string name="app_name">ToDoList</string>
-    <string name="menu_add">Add Task</string>
-    <string name="menu_delete">Delete Task</string>
-    <string name="taskname">Short Description</string>
+    <string name="menu_addtask">Create Task</string>
+    <string name="menu_addcategory">Create Task</string>
+    
+    <string name="menu_deletetask">Delete Task</string>
+    <string name="taskname">Task Name</string>
 
 </resources>

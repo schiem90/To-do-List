@@ -33,13 +33,13 @@ public class TaskListActivity extends Activity {
 	    //currentUser = db.getActiveSession();
 	    
 	  //Testing Tasks, Uncomment and run once to put 2 tasks in for user with ID 1
-	    /*
+	    
 	    Task newTask = new Task("Do Homework", new Date());
 	    newTask.setComments("Comments, blah blah blah");
-	    newTask.setLocation("Somwhere");
+	    newTask.setLocation("Somewhere");
 	    newTask.setCategory(new Category());
 	    db.saveTask(newTask, 1);
-	    */
+	    
 	    //db.deleteTask(1, 1);
 	    /*
 	    Category newCategory = new Category("School Stuff");
