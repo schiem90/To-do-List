@@ -9,6 +9,7 @@ import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -83,11 +84,26 @@ public class TaskListActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.createtask:
-                
+            	Intent i1 = new Intent(TaskListActivity.this, CreateTaskActivity.class);
+	            startActivity(i1);
                 return true;
             case R.id.createcategory:
+            	Intent i2 = new Intent(TaskListActivity.this, CreateCategoryActivity.class);
+	            startActivity(i2);
+                return true;
+            case R.id.createalarm:
                 
                 return true;
+            case R.id.getdirections:
+                
+                return true;
+            case R.id.deletetask:
+    
+            	return true;
+            case R.id.deletecategory:
+    
+            	return true;
+    
             default:
                 return super.onOptionsItemSelected(item);
         }
