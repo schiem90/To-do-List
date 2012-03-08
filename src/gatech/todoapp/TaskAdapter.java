@@ -13,7 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
- * Adapter class for the tasklist.
+ * Adapter class for the tasklist that allows us to build the tasklist given a user's tasks.
  */
 public class TaskAdapter extends BaseAdapter {
 
@@ -21,23 +21,49 @@ public class TaskAdapter extends BaseAdapter {
 	 
 	 private LayoutInflater mInflater;
 
+	 /**
+	  * TaskAdapter Constructor. Takes in the context and the user's tasks.
+	  * @param context - the context the adapter is operating in
+	  * @param tasks - the user's tasks
+	  */
 	 public TaskAdapter(Context context, ArrayList<Task> tasks) {
 	  taskList = tasks;
 	  mInflater = LayoutInflater.from(context);
 	 }
 
+	 /**
+	  * Gets the number of tasks in the list.
+	  * @return count
+	  */
 	 public int getCount() {
 	  return taskList.size();
 	 }
 
+	 /**
+	  * Gets the item at the specified position.
+	  * @param position - item's position
+	  * @return the item at that position
+	  */
 	 public Object getItem(int position) {
 	  return taskList.get(position);
 	 }
 
+	 /**
+	  * Gets the item id.
+	  * @param position - item's position
+	  * @return the item's position
+	  */
 	 public long getItemId(int position) {
 	  return position;
 	 }
 
+	 /**
+	  * Gets the view for the tasklist.
+	  * @param position - the item's position
+	  * @param convertView - the view to convert to
+	  * @param parent - the group of views that this view belongs to
+	  * @return view
+	  */
 	 public View getView(int position, View convertView, ViewGroup parent) {
 	  ViewHolder holder;
 	  if (convertView == null) {
@@ -59,6 +85,10 @@ public class TaskAdapter extends BaseAdapter {
 	  return convertView;
 	 }
 
+	 /**
+	  * Holds the views we need for other classes.
+	  *
+	  */
 	 static class ViewHolder {
 	  TextView txtDescription;
 	  TextView txtLocation;
