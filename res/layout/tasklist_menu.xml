@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<menu xmlns:android="http://schemas.android.com/apk/res/android">
 	    <item android:id="@+id/createtask"
-	          android:icon="@drawable/ic_launcher"
+	          android:icon="@drawable/create_task"
 	          android:title="@string/menu_addtask" />
 	    <item android:id="@+id/createcategory"
-	          android:icon="@drawable/ic_launcher"
+	          android:icon="@drawable/create_category"
 	          android:title="@string/menu_addcategory" />
+	    <item android:id="@+id/createalarm"
+	          android:icon="@drawable/create_alarm"
+	          android:title="@string/menu_addalarm" />
+	    <item android:id="@+id/getDirections"
+	          android:icon="@drawable/directions"
+	          android:title="@string/menu_directions" />
+	    <item android:id="@+id/deletetask"
+	          android:icon="@drawable/delete"
+	          android:title="@string/menu_deletetask" />
+	    <item android:id="@+id/deletecategory"
+	          android:icon="@drawable/delete"
+	          android:title="@string/menu_deletecategory" />
 	</menu>

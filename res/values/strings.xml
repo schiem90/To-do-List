@@ -4,9 +4,12 @@
     <string name="hello">Hello World, ToDoListActivity!</string>
     <string name="app_name">ToDoList</string>
     <string name="menu_addtask">Create Task</string>
-    <string name="menu_addcategory">Create Task</string>
+    <string name="menu_addcategory">Create Category</string>
     
     <string name="menu_deletetask">Delete Task</string>
     <string name="taskname">Task Name</string>
+    <string name="menu_addalarm">Create Alarm</string>
+    <string name="menu_directions">Get Directions</string>
+    <string name="menu_deletecategory">Delete Category</string>
 
 </resources>
