@@ -62,8 +62,10 @@ public class CreateTaskActivity extends Activity {
 		    	Task newTask = new Task(sdescription, date);
 		    	newTask.setComments(ddescription);
 		    	newTask.setLocation(location);
-		    	newTask = db.saveTask(newTask, currentUser.getID());
+		    	newTask = db.saveTask(newTask, 1);
 		    	Log.v("New Task", "Created New Task: " + newTask.getDescription());
+		    	Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
+                startActivity(i);
         	}
         });
         
