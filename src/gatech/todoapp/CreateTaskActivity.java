@@ -45,6 +45,10 @@ public class CreateTaskActivity extends Activity {
         final Spinner categorySpinner  = (Spinner) findViewById(R.id.category);
         
         submitButton.setOnClickListener(new View.OnClickListener() {
+        	/**
+        	 * Creates the new item once the user enters info and hits submit
+        	 * @param v needed to view the model
+        	 */
         	public void onClick(View v) {
         		String sdescription = sdescriptionTextBox.getText().toString();
         		String dueDate = dueDateTextBox.getText().toString();

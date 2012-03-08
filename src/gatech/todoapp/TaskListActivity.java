@@ -73,7 +73,9 @@ public class TaskListActivity extends Activity {
 	    }); */
     }
     
-    
+    /**
+     * This method builds and rebuilds the list if necessary. Gets the users tasks and populates the list.
+     */
     public void buildList(){
     	userTasks = db.getTasksForUser(1);
     	final ListView lv1 = (ListView) findViewById(R.id.taskList);
