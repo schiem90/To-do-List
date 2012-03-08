@@ -23,9 +23,9 @@ public class TaskFilter {
 	 * @param completed Filter by completed or incomplete tasks
 	 * @return The filtered list of tasks
 	 */
-	public static List<Task> filterTaskList(List<Task> taskList, Date date, Category category, 
+	public static ArrayList<Task> filterTaskList(ArrayList<Task> taskList, Date date, Category category, 
 			String location, String searchTerm, Boolean completed) {
-		List<Task> filteredList = new ArrayList<Task>();
+		ArrayList<Task> filteredList = new ArrayList<Task>();
 		
 		for (Task t : taskList) {
 			if (compareDate(date, t) || compareCategory(category, t) || compareLocation(location, t) ||

@@ -8,8 +8,8 @@
     
     <string name="menu_deletetask">Delete Task</string>
     <string name="taskname">Task Name</string>
-    <string name="menu_addalarm">Create Alarm</string>
     <string name="menu_directions">Get Directions</string>
-    <string name="menu_deletecategory">Delete Category</string>
+    <string name="menu_logout">Log Out</string>
+    <string name="menu_filterlist">Filter List</string>
 
 </resources>

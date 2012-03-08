@@ -36,7 +36,7 @@ public class TaskListActivity extends Activity {
 	    setContentView(R.layout.tasklist);
 	    db = new DatabaseUtil(this);
 	    
-	    //currentUser = db.getActiveSession();
+	    currentUser = db.getActiveSession();
 	    
 	  //Testing Tasks, Uncomment and run once to put 2 tasks in for user with ID 1
 	    /*
@@ -75,7 +75,7 @@ public class TaskListActivity extends Activity {
     
     
     public void buildList(){
-    	userTasks = db.getTasksForUser(1);
+    	userTasks = currentUser.getTasks();
     	final ListView lv1 = (ListView) findViewById(R.id.taskList);
     	lv1.setAdapter(new TaskAdapter(this, userTasks));
     }
@@ -100,7 +100,7 @@ public class TaskListActivity extends Activity {
             	Intent i2 = new Intent(TaskListActivity.this, CreateTaskActivity.class);
 	            startActivity(i2);
                 return true;
-            case R.id.createalarm:
+            case R.id.filterlist:
                 
                 return true;
             case R.id.getdirections:
@@ -109,8 +109,10 @@ public class TaskListActivity extends Activity {
             case R.id.deletetask:
     
             	return true;
-            case R.id.deletecategory:
-    
+            case R.id.logout:
+            	db.logoutUser();
+            	Intent iLogout = new Intent(TaskListActivity.this, ToDoListActivity.class);
+	            startActivity(iLogout);
             	return true;
     
             default:

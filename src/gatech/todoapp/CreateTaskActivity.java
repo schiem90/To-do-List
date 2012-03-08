@@ -34,6 +34,7 @@ public class CreateTaskActivity extends Activity {
     	super.onCreate(savedInstanceState);
 	    setContentView(R.layout.createtask);
 	    db = new DatabaseUtil(this);
+	    currentUser = db.getActiveSession();
     
 	    Button submitButton = (Button) findViewById(R.id.submitbutton);
 	    Button cancelButton = (Button) findViewById(R.id.cancelbutton);
@@ -62,7 +63,7 @@ public class CreateTaskActivity extends Activity {
 		    	Task newTask = new Task(sdescription, date);
 		    	newTask.setComments(ddescription);
 		    	newTask.setLocation(location);
-		    	newTask = db.saveTask(newTask, 1);
+		    	newTask = db.saveTask(newTask, currentUser.getID());
 		    	Log.v("New Task", "Created New Task: " + newTask.getDescription());
 		    	Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
                 startActivity(i);

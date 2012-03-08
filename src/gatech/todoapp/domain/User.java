@@ -1,5 +1,6 @@
 package gatech.todoapp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +13,8 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
-	private List<Task> tasks;
-	private List<Task> filteredTasks;
+	private ArrayList<Task> tasks;
+	private ArrayList<Task> filteredTasks;
 	
 	/**
 	 * Default constructor makes a new user with a null ID.
@@ -129,28 +130,28 @@ public class User {
 	/**
 	 * @return the tasks
 	 */
-	public List<Task> getTasks() {
+	public ArrayList<Task> getTasks() {
 		return tasks;
 	}
 	
 	/**
 	 * @param tasks the tasks to set
 	 */
-	public void setTasks(List<Task> tasks) {
+	public void setTasks(ArrayList<Task> tasks) {
 		this.tasks = tasks;
 	}
 
 	/**
 	 * @return the filteredTasks
 	 */
-	public List<Task> getFilteredTasks() {
+	public ArrayList<Task> getFilteredTasks() {
 		return filteredTasks;
 	}
 
 	/**
 	 * @param filteredTasks the filteredTasks to set
 	 */
-	public void setFilteredTasks(List<Task> filteredTasks) {
+	public void setFilteredTasks(ArrayList<Task> filteredTasks) {
 		this.filteredTasks = filteredTasks;
 	}
 

@@ -6,16 +6,16 @@
 	    <item android:id="@+id/createcategory"
 	          android:icon="@drawable/create_category"
 	          android:title="@string/menu_addcategory" />
-	    <item android:id="@+id/createalarm"
+	    <item android:id="@+id/filterlist"
 	          android:icon="@drawable/create_alarm"
-	          android:title="@string/menu_addalarm" />
+	          android:title="@string/menu_filterlist" />
 	    <item android:id="@+id/getdirections"
 	          android:icon="@drawable/directions"
 	          android:title="@string/menu_directions" />
 	    <item android:id="@+id/deletetask"
 	          android:icon="@drawable/delete"
 	          android:title="@string/menu_deletetask" />
-	    <item android:id="@+id/deletecategory"
+	    <item android:id="@+id/logout"
 	          android:icon="@drawable/delete"
-	          android:title="@string/menu_deletecategory" />
+	          android:title="@string/menu_logout" />
 	</menu>

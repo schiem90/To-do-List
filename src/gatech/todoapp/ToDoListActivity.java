@@ -26,6 +26,12 @@ public class ToDoListActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        db = new DatabaseUtil(ToDoListActivity.this);
+        
+        if (db.getActiveSession() != null) {
+	        Intent intent = new Intent(ToDoListActivity.this, TaskListActivity.class);
+	        startActivity(intent);
+        }
         
         
         //Register button
@@ -41,6 +47,7 @@ public class ToDoListActivity extends Activity {
         	
         	}
             });
+        
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
         	/**
@@ -70,12 +77,13 @@ public class ToDoListActivity extends Activity {
 			    	alertDialog.show();
 		    	} else {
 		    		Log.v("Todo List Session", "Logged in as: " + db.getActiveSession());
+		    		
 		    		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		    		SharedPreferences.Editor editor = settings.edit();
 		    		editor.putInt("userID", currentUser.getID());
 		    		
 		    		//Remove once we have a logout button
-		    		db.logoutUser();
+		    		//db.logoutUser();
 		    		Intent i = new Intent(ToDoListActivity.this, TaskListActivity.class);
 		               startActivity(i);
 		    	}		
@@ -90,8 +98,6 @@ public class ToDoListActivity extends Activity {
 	public void onStart()
 	{
     	super.onStart();
-    	
-    	db = new DatabaseUtil(ToDoListActivity.this);
     	   	
     	//This next line will reset the database, comment it out!!!!
     	//db.onUpgrade(db.getWritableDatabase(), 2, 3);
