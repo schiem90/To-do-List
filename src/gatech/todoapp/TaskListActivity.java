@@ -27,6 +27,8 @@ public class TaskListActivity extends Activity {
 	
 	private DatabaseUtil db;
     private User currentUser;
+    private ArrayList<Task> userTasks;
+    
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,12 +39,13 @@ public class TaskListActivity extends Activity {
 	    //currentUser = db.getActiveSession();
 	    
 	  //Testing Tasks, Uncomment and run once to put 2 tasks in for user with ID 1
-	    
+	    /*
 	    Task newTask = new Task("Do Homework", new Date());
 	    newTask.setComments("Comments, blah blah blah");
 	    newTask.setLocation("Somewhere");
 	    newTask.setCategory(new Category());
 	    db.saveTask(newTask, 1);
+	    */
 	    
 	    //db.deleteTask(1, 1);
 	    /*
@@ -56,10 +59,8 @@ public class TaskListActivity extends Activity {
 	    //user logged in forever
 	    //We also won't have to do this once we have a add task screen because
 	    //the currentUser(the one logged in) will already have all its tasks
-	    ArrayList<Task> userTasks = db.getTasksForUser(1);
-        
-        final ListView lv1 = (ListView) findViewById(R.id.taskList);
-        lv1.setAdapter(new TaskAdapter(this, userTasks));
+	    
+	    buildList();
 	    
 	    /*
 	    lv1.setOnItemClickListener(new OnItemClickListener() {
@@ -70,6 +71,13 @@ public class TaskListActivity extends Activity {
 	      Toast.makeText(ListViewBlogPost.this, "You have chosen: " + " " + fullObject.getName(), Toast.LENGTH_LONG).show();
 	     }  
 	    }); */
+    }
+    
+    
+    public void buildList(){
+    	userTasks = db.getTasksForUser(1);
+    	final ListView lv1 = (ListView) findViewById(R.id.taskList);
+    	lv1.setAdapter(new TaskAdapter(this, userTasks));
     }
     
     @Override
@@ -84,11 +92,12 @@ public class TaskListActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.createtask:
+            	
             	Intent i1 = new Intent(TaskListActivity.this, CreateTaskActivity.class);
 	            startActivity(i1);
                 return true;
             case R.id.createcategory:
-            	Intent i2 = new Intent(TaskListActivity.this, CreateCategoryActivity.class);
+            	Intent i2 = new Intent(TaskListActivity.this, CreateTaskActivity.class);
 	            startActivity(i2);
                 return true;
             case R.id.createalarm:
