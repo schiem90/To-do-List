@@ -14,9 +14,13 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 /**
@@ -71,6 +75,7 @@ public class TaskListActivity extends Activity {
 	      Toast.makeText(ListViewBlogPost.this, "You have chosen: " + " " + fullObject.getName(), Toast.LENGTH_LONG).show();
 	     }  
 	    }); */
+	    
     }
     
     /**
@@ -80,6 +85,22 @@ public class TaskListActivity extends Activity {
     	userTasks = currentUser.getTasks();
     	final ListView lv1 = (ListView) findViewById(R.id.taskList);
     	lv1.setAdapter(new TaskAdapter(this, userTasks));
+    	registerForContextMenu(lv1);
+    	
+    }
+    
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo)
+    {
+    	super.onCreateContextMenu(menu, v, menuInfo);  
+    	if(v.getId()==R.id.taskList)
+    	{
+    		 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+    		 menu.setHeaderTitle(userTasks.get(info.position).toString());
+    		 menu.add(Menu.NONE, 0, 0, "Edit");
+    		 menu.add(Menu.NONE, 0,0,"Delete");
+    		 //menu.add();
+    	}
     }
     
     @Override

@@ -14,6 +14,7 @@ public class Task {
 	private Date date;
 	private String comments;
 	private Category category;
+	private boolean complete; //true if task is completed, false if otherwise
 	
 	/**
 	 * Constructor that creates a new task with a description and
@@ -24,6 +25,7 @@ public class Task {
 	public Task(String description, Date date) {
 		this.description = description;
 		this.date = date;
+		complete=false;
 	}
 	
 	public Task() {
@@ -127,6 +129,13 @@ public class Task {
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	/** Standard toString method that turns Task into a String
+	 */
+	public String toString()
+	{
+		return description ;
 	}
 
 }
