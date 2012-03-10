@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Creates the TaskList view.
@@ -42,6 +43,10 @@ public class TaskListActivity extends Activity {
 	    
 	    currentUser = db.getActiveSession();
 	    
+	    TextView titleText = (TextView) findViewById(R.id.titleText);
+	    titleText.setText(currentUser.getName() + "'s ToDo List");
+	    
+	    
 	  //Testing Tasks, Uncomment and run once to put 2 tasks in for user with ID 1
 	    /*
 	    Task newTask = new Task("Do Homework", new Date());
@@ -52,12 +57,6 @@ public class TaskListActivity extends Activity {
 	    */
 	    
 	    //db.deleteTask(1, 1);
-	    /*
-	    Category newCategory = new Category("School Stuff");
-	    db.createCategory(newCategory, 1);
-	    Category newCategory2 = new Category("Work");
-	    db.createCategory(newCategory2, 1);
-	    */
 	    
 	    //This is just 1 until we get a logout button so we can not have one
 	    //user logged in forever
@@ -93,12 +92,12 @@ public class TaskListActivity extends Activity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo)
     {
     	super.onCreateContextMenu(menu, v, menuInfo);  
-    	if(v.getId()==R.id.taskList)
+    	if (v.getId() == R.id.taskList)
     	{
-    		 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+    		 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
     		 menu.setHeaderTitle(userTasks.get(info.position).toString());
     		 menu.add(Menu.NONE, 0, 0, "Edit");
-    		 menu.add(Menu.NONE, 0,0,"Delete");
+    		 menu.add(Menu.NONE, 0, 0, "Delete");
     		 //menu.add();
     	}
     }

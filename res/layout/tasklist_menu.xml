@@ -5,7 +5,7 @@
 	          android:title="@string/menu_addtask" />
 	    <item android:id="@+id/createcategory"
 	          android:icon="@drawable/create_category"
-	          android:title="@string/menu_addcategory" />
+	          android:title="@string/menu_category" />
 	    <item android:id="@+id/filterlist"
 	          android:icon="@drawable/create_alarm"
 	          android:title="@string/menu_filterlist" />
