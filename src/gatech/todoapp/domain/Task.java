@@ -22,9 +22,11 @@ public class Task {
 	 * @param description The task's description
 	 * @param date The date of the task
 	 */
-	public Task(String description, Date date) {
+	public Task(String description, String location, Date date, String comments) {
 		this.description = description;
+		this.location = location;
 		this.date = date;
+		this.comments = comments;
 		complete=false;
 	}
 	

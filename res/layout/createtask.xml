@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
@@ -18,80 +18,85 @@
                 android:text="Create Task"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <Button
-                android:id="@+id/submitbutton"
+            <EditText
+                android:id="@+id/taskName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_marginBottom="38dp"
-                android:layout_marginLeft="72dp"
-                android:text="Submit" />
-
-            <Button
-                android:id="@+id/cancelbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/submitbutton"
-                android:layout_alignBottom="@+id/submitbutton"
-                android:layout_marginLeft="44dp"
-                android:layout_toRightOf="@+id/submitbutton"
-                android:text="Cancel" />
-
-            <EditText
-                android:id="@+id/location"
-                android:layout_width="500dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/submitbutton"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="34dp"
-                android:hint="Location" />
-
-            <CheckBox
-                android:id="@+id/checkBox1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/location"
-                android:layout_alignParentLeft="true"
-                android:text="Repeating Date?" />
-
-            <Spinner
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/checkBox1"
-                android:layout_alignLeft="@+id/cancelbutton"
-                android:text="Category" />
-
-            <EditText
-                android:id="@+id/ddescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:hint="Detailed Description"
-                android:inputType="textMultiLine" />
-
-            <EditText
-                android:id="@+id/duedate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/ddescription"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="29dp"
-                android:hint="Due Date" >
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textView1"
+                android:hint="Edit Short Description" >
 
                 <requestFocus />
             </EditText>
 
             <EditText
-                android:id="@+id/sdescription"
+                android:id="@+id/taskLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/duedate"
-                android:layout_alignLeft="@+id/submitbutton"
-                android:layout_marginBottom="18dp"
-                android:hint="Edit Short Description" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/taskName"
+                android:hint="Location" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/taskLocation"
+                android:layout_centerHorizontal="true"
+                android:text="Assign Due Date"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextView01"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:id="@+id/taskDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/datePicker1"
+                android:hint="Detailed Description"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/taskDesc"
+                android:layout_centerHorizontal="true"
+                android:text="Select Category"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextView02"
+                android:layout_centerHorizontal="true"
+                android:text="Category" />
+
+            <Button
+                android:id="@+id/taskCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner1"
+                android:layout_toRightOf="@+id/spinner1"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/taskSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner1"
+                android:layout_toLeftOf="@+id/spinner1"
+                android:text="Submit" />
 
         </RelativeLayout>
 

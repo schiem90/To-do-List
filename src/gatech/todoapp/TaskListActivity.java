@@ -119,7 +119,7 @@ public class TaskListActivity extends Activity {
 	            startActivity(i1);
                 return true;
             case R.id.createcategory:
-            	Intent i2 = new Intent(TaskListActivity.this, CreateTaskActivity.class);
+            	Intent i2 = new Intent(TaskListActivity.this, CreateCategoryActivity.class);
 	            startActivity(i2);
                 return true;
             case R.id.filterlist:
@@ -133,6 +133,7 @@ public class TaskListActivity extends Activity {
             	return true;
             case R.id.logout:
             	db.logoutUser();
+            	currentUser = null;
             	Intent iLogout = new Intent(TaskListActivity.this, ToDoListActivity.class);
 	            startActivity(iLogout);
             	return true;

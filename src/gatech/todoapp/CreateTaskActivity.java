@@ -1,91 +1,146 @@
+
 package gatech.todoapp;
+
+import java.sql.Date;
+import java.util.ArrayList;
 
 import gatech.todoapp.domain.Category;
 import gatech.todoapp.domain.Task;
 import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
-
-import java.util.ArrayList;
-import java.util.Date;
-
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 /**
- * This class is used to launch and handle the create task screen.
+ * This class is the activity for the create account view.
  *
  */
 public class CreateTaskActivity extends Activity {
+	    
+	    DatabaseUtil db;
+	    User currentUser;
 
-	private DatabaseUtil db;
-    private User currentUser;
-    
-	
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-	    setContentView(R.layout.createtask);
-	    db = new DatabaseUtil(this);
-	    currentUser = db.getActiveSession();
-    
-	    Button submitButton = (Button) findViewById(R.id.submitbutton);
-	    Button cancelButton = (Button) findViewById(R.id.cancelbutton);
-        final EditText sdescriptionTextBox  = (EditText) findViewById(R.id.sdescription);
-        final EditText dueDateTextBox  = (EditText) findViewById(R.id.duedate);
-        final EditText ddescriptionTextBox  = (EditText) findViewById(R.id.ddescription);
-        final EditText locationTextBox  = (EditText) findViewById(R.id.location);
-        final CheckBox repeatingDateCheckBox = (CheckBox) findViewById(R.id.checkBox1);
-        final Spinner categorySpinner  = (Spinner) findViewById(R.id.category);
-        
-        submitButton.setOnClickListener(new View.OnClickListener() {
-        	/**
-        	 * Creates the new item once the user enters info and hits submit
-        	 * @param v needed to view the model
-        	 */
-        	public void onClick(View v) {
-        		String sdescription = sdescriptionTextBox.getText().toString();
-        		String dueDate = dueDateTextBox.getText().toString();
-		    	String ddescription = ddescriptionTextBox.getText().toString();
-		    	String location = locationTextBox.getText().toString();
-		    	
-		    	//convert string to date
-		    	Date date = new Date();
-		    	//add check for Spinner
-		    	boolean repeatingDate = repeatingDateCheckBox.isChecked();
-		    	
-		    	
-		    	AlertDialog alertDialog = new AlertDialog.Builder(CreateTaskActivity.this).create();
-		    	alertDialog.setTitle("New Task");
-		    	Task newTask = new Task(sdescription, date);
-		    	newTask.setComments(ddescription);
-		    	newTask.setLocation(location);
-		    	newTask = db.saveTask(newTask, currentUser.getID());
-		    	Log.v("New Task", "Created New Task: " + newTask.getDescription());
-		    	Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
-                startActivity(i);
-        	}
-        });
-        
-        
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-        	/**
-        	 * Takes the user back to tasklist screen when cancel button is clicked
-        	 * @param v needed to view the model
-        	 */
-        	public void onClick(View v) {
-        		Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
-                startActivity(i);
-        	}
-        
-    });
-    
-    }
+		/**
+		 * Called when the activity is first created.
+		 */
+		 public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.createtask);
+	        
+	        db = new DatabaseUtil(CreateTaskActivity.this);
+	        
+	        //Run once and delete
+	   /*     Category newCategory = new Category("School Stuff");
+		    db.createCategory(newCategory, 1);
+		    Category newCategory2 = new Category("Work");
+		    db.createCategory(newCategory2, 1);*/
+		    
+	        ArrayList<Category> categories = db.getCategories(1);
+	        
+	        
+	        Button taskSubmitButton = (Button) findViewById(R.id.taskSubmit);
+	        Button taskCancelButton = (Button) findViewById(R.id.taskCancel);
+	        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+	        ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(CreateTaskActivity.this, android.R.layout.simple_spinner_item, categories);
+	        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+	        spinner.setAdapter(adapter);
+	        Log.i("AAA","spinner0");
+	        final DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker1);
+	        final EditText taskNameTextBox  = (EditText) findViewById(R.id.taskName);
+	        final EditText taskLocationTextBox  = (EditText) findViewById(R.id.taskLocation);
+	      //  final EditText dueDateTextBox  = (EditText) findViewById(R.id.dueDate);
+	        final EditText taskDescTextBox  = (EditText) findViewById(R.id.taskDesc);
+	        
+	       
+	        
+	        
+	        //Register procedure
+	        taskSubmitButton.setOnClickListener(new View.OnClickListener() {
+	        	/**
+	        	 * Registers and creates a new user if credentials are valid
+	        	 * @param v needed to view the model
+	        	 */
+	        	public void onClick(View v) {
+	        		String taskName = taskNameTextBox.getText().toString();
+	        		String taskLocation = taskLocationTextBox.getText().toString();
+			    	Date dueDate = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+			    	String taskDesc = taskDescTextBox.getText().toString();
+			
+			    	
+/*			    	boolean registered = true; 
+			    	
+			    	//must input something for all text boxes
+			    	if ((username.equals("")) &&
+			    			(name.equals("")) &&
+			    				(password.equals("")) &&
+			    					(repassword.equals("")) &&
+			    						(email.equals(""))) {
+			    		registered = false; 
+			    	}
+			    
+			    	if (!password.equals(repassword)) {
+			    		//passwords must match
+			    		registered = false; 
+			        }
+			    	
+			    
+			    	//username must not already be taken in database
+			    	for (User users : db.getAllUsers()) {
+			    		if (username.equals(users.getUsername())) {
+			    			registered = false; 
+			    		}
+			    	}*/
+			    
+			    	
+			    
+			    	
+			    	AlertDialog alertDialog = new AlertDialog.Builder(CreateTaskActivity.this).create();
+			    	alertDialog.setTitle("New Task");
+
+			    	
+			 
+			    		alertDialog.setMessage("Task Added");
+			    		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+				    	      public void onClick(DialogInterface dialog, int which) {
+				    	    	  dialog.dismiss();
+				    	    } });
+				    	alertDialog.show();
+			
+			    		Task newTask = new Task(taskName, taskLocation, dueDate, taskDesc);
+				    	newTask = db.saveTask(newTask, 1);
+				    	Log.v("New Account", "Created New User: " + db.getActiveSession());
+				    	Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
+		                startActivity(i);
+			    	
+			    	
+	        	}
+	        });
+	        
+	        
+	      //  Button cancelButton = (Button) findViewById(R.id.cancelRegisterButton);
+	        
+	      
+	        taskCancelButton.setOnClickListener(new View.OnClickListener() {
+	        	/**
+	        	 * Takes the user back to login screen when cancel button is clicked
+	        	 * @param v needed to view the model
+	        	 */
+	        	public void onClick(View v) {
+	        		Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
+	                startActivity(i);
+	        	}
+	        
+	    });
+	        
+		}
 }
