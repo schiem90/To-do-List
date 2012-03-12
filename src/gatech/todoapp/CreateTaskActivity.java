@@ -29,6 +29,9 @@ public class CreateTaskActivity extends Activity {
 	    
 	    DatabaseUtil db;
 	    User currentUser;
+	  /*  private static int year; 
+	    private static int month; 
+	    private static int day;*/ 
 
 		/**
 		 * Called when the activity is first created.
@@ -73,7 +76,26 @@ public class CreateTaskActivity extends Activity {
 	        	public void onClick(View v) {
 	        		String taskName = taskNameTextBox.getText().toString();
 	        		String taskLocation = taskLocationTextBox.getText().toString();
-			    	Date dueDate = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+	        		DatePicker.OnDateChangedListener datePickerListener = new DatePicker.OnDateChangedListener() {
+	        			
+						
+					   private int year;
+					   private int month;
+						private int day;
+
+						public void onDateChanged(DatePicker view, int year, int monthOfYear,
+								int dayOfMonth) {
+							// TODO Auto-generated method stub
+							this.year = year; 
+							this.month = monthOfYear; 
+							this.day = dayOfMonth; 
+							
+							datePicker.init(year, month, day, null);
+							
+						}
+					};
+			    
+					Date dueDate = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
 			    	String taskDesc = taskDescTextBox.getText().toString();
 			
 			    	
