@@ -96,10 +96,9 @@ public class CreateAccountActivity extends Activity {
 		    	} else {
 		    		User newUser = new User(name, username, email, password);
 			    	newUser = db.registerUser(newUser);
-			    	Log.v("New Account", "Created New User: " + db.getActiveSession());
+			    	Log.v("New Account", "Created New User: " + newUser);
 			    	Intent i = new Intent(CreateAccountActivity.this, ToDoListActivity.class);
 	                startActivity(i);
-		    		//alertDialog.setMessage("User ID: " + newUser.getID() + "\n Name: " + newUser.getName());
 		    	}
         	}
         });

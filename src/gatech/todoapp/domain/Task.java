@@ -27,7 +27,7 @@ public class Task {
 		this.location = location;
 		this.date = date;
 		this.comments = comments;
-		complete=false;
+		complete = false;
 	}
 	
 	public Task() {

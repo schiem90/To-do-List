@@ -1,7 +1,7 @@
 
 package gatech.todoapp;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 import gatech.todoapp.domain.Category;
@@ -41,14 +41,9 @@ public class CreateTaskActivity extends Activity {
 	        setContentView(R.layout.createtask);
 	        
 	        db = new DatabaseUtil(CreateTaskActivity.this);
-	        
-	        //Run once and delete
-	   /*     Category newCategory = new Category("School Stuff");
-		    db.createCategory(newCategory, 1);
-		    Category newCategory2 = new Category("Work");
-		    db.createCategory(newCategory2, 1);*/
+	        currentUser = db.getActiveSession();
 		    
-	        ArrayList<Category> categories = db.getCategories(1);
+	        ArrayList<Category> categories = db.getCategories(currentUser.getID());
 	        
 	        
 	        Button taskSubmitButton = (Button) findViewById(R.id.taskSubmit);
@@ -61,7 +56,6 @@ public class CreateTaskActivity extends Activity {
 	        final DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker1);
 	        final EditText taskNameTextBox  = (EditText) findViewById(R.id.taskName);
 	        final EditText taskLocationTextBox  = (EditText) findViewById(R.id.taskLocation);
-	      //  final EditText dueDateTextBox  = (EditText) findViewById(R.id.dueDate);
 	        final EditText taskDescTextBox  = (EditText) findViewById(R.id.taskDesc);
 	        
 	       
@@ -95,36 +89,9 @@ public class CreateTaskActivity extends Activity {
 						}
 					};
 			    
-					Date dueDate = new Date(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
-			    	String taskDesc = taskDescTextBox.getText().toString();
-			
-			    	
-/*			    	boolean registered = true; 
-			    	
-			    	//must input something for all text boxes
-			    	if ((username.equals("")) &&
-			    			(name.equals("")) &&
-			    				(password.equals("")) &&
-			    					(repassword.equals("")) &&
-			    						(email.equals(""))) {
-			    		registered = false; 
-			    	}
-			    
-			    	if (!password.equals(repassword)) {
-			    		//passwords must match
-			    		registered = false; 
-			        }
-			    	
-			    
-			    	//username must not already be taken in database
-			    	for (User users : db.getAllUsers()) {
-			    		if (username.equals(users.getUsername())) {
-			    			registered = false; 
-			    		}
-			    	}*/
-			    
-			    	
-			    
+					Date dueDate = new Date(datePicker.getYear() - 1900, datePicker.getMonth(), datePicker.getDayOfMonth());
+					dueDate = new Date(dueDate.getTime());
+			    	String taskDesc = taskDescTextBox.getText().toString();			    
 			    	
 			    	AlertDialog alertDialog = new AlertDialog.Builder(CreateTaskActivity.this).create();
 			    	alertDialog.setTitle("New Task");
@@ -139,8 +106,8 @@ public class CreateTaskActivity extends Activity {
 				    	alertDialog.show();
 			
 			    		Task newTask = new Task(taskName, taskLocation, dueDate, taskDesc);
-				    	newTask = db.saveTask(newTask, 1);
-				    	Log.v("New Account", "Created New User: " + db.getActiveSession());
+				    	newTask = db.saveTask(newTask, currentUser.getID());
+				    	Log.v("New Task", "Created New Task: " + newTask);
 				    	Intent i = new Intent(CreateTaskActivity.this, TaskListActivity.class);
 		                startActivity(i);
 			    	

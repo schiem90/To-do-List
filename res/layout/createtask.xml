@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
+                android:singleLine="true"
                 android:layout_below="@+id/textView1"
                 android:hint="Edit Short Description" >
 
@@ -36,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
+                android:singleLine="true"
                 android:layout_below="@+id/taskName"
                 android:hint="Location" />
 
@@ -62,8 +64,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/datePicker1"
-                android:hint="Detailed Description"
-                android:inputType="textMultiLine" />
+                android:singleLine="true"
+                android:hint="Detailed Description"/>
 
             <TextView
                 android:id="@+id/TextView02"

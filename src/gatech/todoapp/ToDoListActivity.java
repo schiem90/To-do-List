@@ -1,5 +1,7 @@
 package gatech.todoapp;
 
+import java.util.ArrayList;
+
 import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
 import android.app.Activity;

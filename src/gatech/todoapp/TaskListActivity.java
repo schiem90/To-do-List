@@ -42,45 +42,21 @@ public class TaskListActivity extends Activity {
 	    db = new DatabaseUtil(this);
 	    
 	    currentUser = db.getActiveSession();
+	    if (currentUser == null) {
+	    	Intent iLogout = new Intent(TaskListActivity.this, ToDoListActivity.class);
+            startActivity(iLogout);
+	    }
 	    
 	    TextView titleText = (TextView) findViewById(R.id.titleText);
 	    titleText.setText(currentUser.getName() + "'s ToDo List");
 	    
-	    
-	  //Testing Tasks, Uncomment and run once to put 2 tasks in for user with ID 1
-	    /*
-	    Task newTask = new Task("Do Homework", new Date());
-	    newTask.setComments("Comments, blah blah blah");
-	    newTask.setLocation("Somewhere");
-	    newTask.setCategory(new Category());
-	    db.saveTask(newTask, 1);
-	    */
-	    
-	    //db.deleteTask(1, 1);
-	    
-	    //This is just 1 until we get a logout button so we can not have one
-	    //user logged in forever
-	    //We also won't have to do this once we have a add task screen because
-	    //the currentUser(the one logged in) will already have all its tasks
-	    
 	    buildList();
-	    
-	    /*
-	    lv1.setOnItemClickListener(new OnItemClickListener() {
-	     @Override
-	     public void onItemClick(AdapterView<?> a, View v, int position, long id) { 
-	      Object o = lv1.getItemAtPosition(position);
-	      Task fullObject = (Task)o;
-	      Toast.makeText(ListViewBlogPost.this, "You have chosen: " + " " + fullObject.getName(), Toast.LENGTH_LONG).show();
-	     }  
-	    }); */
-	    
     }
     
     /**
      * This method builds and rebuilds the list if necessary. Gets the users tasks and populates the list.
      */
-    public void buildList(){
+    public void buildList() {
     	userTasks = currentUser.getTasks();
     	final ListView lv1 = (ListView) findViewById(R.id.taskList);
     	lv1.setAdapter(new TaskAdapter(this, userTasks));

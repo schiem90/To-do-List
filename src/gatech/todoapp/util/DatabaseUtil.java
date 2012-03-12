@@ -83,10 +83,10 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		 * Gets a list of all users in the database.
 		 * @return A list of users in the database
 		 */
-		public List<User> getAllUsers() {
+		public ArrayList<User> getAllUsers() {
 			
 			SQLiteDatabase db = this.getReadableDatabase();
-			List<User> users = new ArrayList<User>();
+			ArrayList<User> users = new ArrayList<User>();
 			
 			Cursor cursor = db.rawQuery("SELECT * FROM user", null);
 			
@@ -115,12 +115,14 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			values.put("email", user.getEmail());
 			values.put("password", user.getPassword());
 			values.put("activeSession", 0);
-			db.insert("user", "name", values);			
-			db.close();
+			db.insert("user", "name", values);
 			
 			user = populateUserByUsername(user.getUsername());
 			
-			//Get the ID from the database
+			createCategory(new Category("Personal"), user.getID());
+			createCategory(new Category("School"), user.getID());
+			createCategory(new Category("Work"), user.getID());
+			db.close();
 			
 			return user;
 		}
@@ -239,7 +241,12 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 			task.setID(cursor.getInt(0));
 			task.setDescription(cursor.getString(1));
 			task.setLocation(cursor.getString(2));
-			task.setDate(new Date(Date.parse(cursor.getString(3))));		
+			try {
+				task.setDate(new Date(cursor.getString(3)));
+			} catch (IllegalArgumentException ie) {
+				task.setDate(new Date());
+			}
+			//task.setDate(new Date());
 			task.setComments(cursor.getString(4));
 			task.setCategory(new Category());
 			//task.setCategory(populateCategory(cursor.getString(5)));
