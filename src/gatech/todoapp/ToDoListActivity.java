@@ -1,7 +1,5 @@
 package gatech.todoapp;
 
-import java.util.ArrayList;
-
 import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
 import android.app.Activity;
@@ -22,8 +20,7 @@ import android.widget.EditText;
 public class ToDoListActivity extends Activity {
 	
 	DatabaseUtil db;
-	
-    /** Called when the activity is first created. */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,19 +1,13 @@
 package gatech.todoapp;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-import gatech.todoapp.domain.Category;
 import gatech.todoapp.domain.Task;
 import gatech.todoapp.domain.User;
 import gatech.todoapp.util.DatabaseUtil;
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;

@@ -2,7 +2,6 @@ package gatech.todoapp.util;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,7 +16,6 @@ import gatech.todoapp.domain.User;
 /**
  * This class is a utility for creating and using
  * with the database.
- *
  */
 public class DatabaseUtil extends SQLiteOpenHelper {
 

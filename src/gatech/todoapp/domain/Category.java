@@ -52,7 +52,7 @@ public class Category {
 	
 	/**
 	 * Creates a new category with a given name.
-	 * @param name
+	 * @param name The name of the category
 	 */
 	public Category(String name) {
 		this();

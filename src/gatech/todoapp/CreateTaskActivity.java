@@ -29,13 +29,8 @@ public class CreateTaskActivity extends Activity {
 	    
 	    DatabaseUtil db;
 	    User currentUser;
-	  /*  private static int year; 
-	    private static int month; 
-	    private static int day;*/ 
 
-		/**
-		 * Called when the activity is first created.
-		 */
+		 @Override
 		 public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.createtask);
@@ -52,7 +47,7 @@ public class CreateTaskActivity extends Activity {
 	        ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(CreateTaskActivity.this, android.R.layout.simple_spinner_item, categories);
 	        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 	        spinner.setAdapter(adapter);
-	        Log.i("AAA","spinner0");
+	        Log.i("AAA", "spinner0");
 	        final DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker1);
 	        final EditText taskNameTextBox  = (EditText) findViewById(R.id.taskName);
 	        final EditText taskLocationTextBox  = (EditText) findViewById(R.id.taskLocation);

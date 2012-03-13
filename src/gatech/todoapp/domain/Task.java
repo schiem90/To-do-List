@@ -20,7 +20,9 @@ public class Task {
 	 * Constructor that creates a new task with a description and
 	 * a date.
 	 * @param description The task's description
+	 * @param location The location of the task
 	 * @param date The date of the task
+	 * @param comments Additional comments
 	 */
 	public Task(String description, String location, Date date, String comments) {
 		this.description = description;
@@ -30,6 +32,9 @@ public class Task {
 		complete = false;
 	}
 	
+	/**
+	 * Creates a new empty task without an ID.
+	 */
 	public Task() {
 		ID = null;
 	}
@@ -133,8 +138,7 @@ public class Task {
 		this.category = category;
 	}
 	
-	/** Standard toString method that turns Task into a String
-	 */
+	@Override
 	public String toString()
 	{
 		return description ;
