@@ -137,6 +137,23 @@ public class Task {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	/**
+	 * changes the boolean value of complete to other
+	 */
+	public void changeComplete(){
+		if (this.complete == false){
+			this.complete = true;
+		}
+		else{
+			this.complete = false;
+		}
+	}
+	/**
+	 * @return the boolean complete
+	 */
+	public boolean getComplete(){
+		return this.complete; 
+	}
 	
 	@Override
 	public String toString()
