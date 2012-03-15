@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="CreateTaskActivity"></activity>
         <activity android:name="CreateCategoryActivity"></activity>
+        <activity android:name=".FilterListActivity"></activity>
     </application>
 
 </manifest>

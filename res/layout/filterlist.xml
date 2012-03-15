@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Filter List" />
+
+        <CheckBox
+            android:id="@+id/checkBoxDateFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textView1"
+            android:text="By Date" />
+
+        <DatePicker
+            android:id="@+id/datePickerFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxDateFilter"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:id="@+id/checkBoxCategoryFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/datePickerFilter"
+            android:text="By Category" />
+
+        <Spinner
+            android:id="@+id/spinnerCategoryFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBoxCategoryFilter"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:id="@+id/checkBoxCompleteFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/spinnerCategoryFilter"
+            android:text="By Completion Status" />
+
+        <Spinner
+            android:id="@+id/spinnerCompleteFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/spinnerCategoryFilter"
+            android:layout_below="@+id/checkBoxCompleteFilter" />
+
+        <Button
+            android:id="@+id/cancelFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerCompleteFilter"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/spinnerCompleteFilter"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/submitFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cancelFilterButton"
+            android:layout_alignBottom="@+id/cancelFilterButton"
+            android:layout_toLeftOf="@+id/spinnerCompleteFilter"
+            android:text="Submit" />
+
+    </RelativeLayout>
+
+</LinearLayout>
