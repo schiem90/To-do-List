@@ -51,7 +51,10 @@ public class TaskListActivity extends Activity {
      * This method builds and rebuilds the list if necessary. Gets the users tasks and populates the list.
      */
     public void buildList() {
-    	userTasks = currentUser.getTasks();
+    	if (currentUser.getFilteredTasks() != null)
+    		userTasks = currentUser.getFilteredTasks();
+    	else
+    		userTasks = currentUser.getTasks();
     	final ListView lv1 = (ListView) findViewById(R.id.taskList);
     	lv1.setAdapter(new TaskAdapter(this, userTasks));
     	registerForContextMenu(lv1);
